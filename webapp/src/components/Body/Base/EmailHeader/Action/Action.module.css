@@ -3,12 +3,31 @@
     align-items: center;
     justify-content: center;
 
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 38px;
+    min-height: 30px;
 
-    background-color: aquamarine;
+    margin: 4px 0;
+
+    background-color: #fff;
+
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+.action:hover{
+    background-color: #FAFAFA;
+    border-color: #E5E5E5;
+}
+.action.expanded{
+    padding: 0 10px 0 5px;
 }
 .action .img{
     max-width: 20px;
     max-height: 20px;
+    margin-left: 4px;
+    margin-right: 2px;
+}
+.action .title{
+    margin: 0 3px 0 3px;
+    font-size: 14px;
+    user-select: none;
 }

@@ -35,7 +35,9 @@ const EmailHeader = props => {
                             <span className={styles.text}>New email</span>
                         </div>
                         <div className={styles.dropdown}>
-
+                            <Image 
+                                src={'./media/ribbon/white_dropdown.png'}
+                                className={styles.img}/>
                         </div>
                     </div>
 
@@ -61,6 +63,25 @@ const EmailHeader = props => {
 
                     <Divider />
 
+                    <div className={styles.quick_steps_container}>
+                        <div className={styles.action}>
+                            <Image 
+                                src={`./media/ribbon/quick_steps.png`}
+                                className={styles.img}/>
+                            <span className={styles.title}>Quick steps</span>
+                        </div>
+                        <div className={styles.dropdown}>
+                            <Image 
+                                src={`./media/ribbon/dropdown.png`}
+                                className={styles.img}/>
+                        </div>
+                    </div>
+
+                    <Action 
+                        imgName='unread_email'
+                        title='Read / Unread'
+                        expanded/>
+
                     <ActionWithDropdown 
                         imgName='categorise'/>
                     <ActionWithDropdown 
@@ -80,7 +101,7 @@ const EmailHeader = props => {
                     <Action
                         imgName='more'/>
                 </div>
-                <div className={styles.dropdown}>
+                <div className={styles.ribbon_dropdown}>
                     <Image 
                         src={`./media/ribbon/dropdown.png`}
                         className={styles.img}/>
