@@ -1,0 +1,16 @@
+.app_launcher{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: inherit;
+    transition: 0.1s;
+}
+.app_launcher:hover{
+    background-color: #0C3B5E;
+}
+
+.app_launcher .img{
+    width: 20px;
+    height: 20px;
+}

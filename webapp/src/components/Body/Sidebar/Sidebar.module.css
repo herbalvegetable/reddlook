@@ -1,0 +1,45 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: #F0F0F0;
+    height: 100%;
+}
+
+.sidebar > .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 38px;
+    width: 100%;
+    max-height: 38px;
+    height: 100%;
+    padding: 1px;
+    margin: 3px 0;
+
+    border-radius: 4px;
+    border-width: 0 0 0 3px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.sidebar > .action:first-of-type {
+    border-color: #0F6CBD;
+}
+
+.sidebar > .action:hover{
+    background-color: #FFFFFF;
+}
+
+.sidebar > .action .img {
+    width: 24px;
+    height: 24px;
+
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}

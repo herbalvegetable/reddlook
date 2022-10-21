@@ -1,0 +1,8 @@
+.main{
+    display: grid;
+    grid-template-columns: 246px 350px 1fr;
+
+    width: 100%;
+    max-height: calc(100vh - 128px);
+    height: 100%;
+}

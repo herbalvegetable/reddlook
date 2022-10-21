@@ -1,0 +1,9 @@
+.header{
+    display: grid;
+    grid-template-columns: 48px 246px 350px 1fr;
+    grid-template-rows: 48px;
+
+    width: 100%;
+    height: 48px;
+    background-color: #0F6CBD;
+}

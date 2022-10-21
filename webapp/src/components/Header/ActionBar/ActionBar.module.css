@@ -1,0 +1,49 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 100%;
+}
+
+
+.main > .action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    min-width: 48px;
+    height: 100%;
+    transition: 0.1s;
+}
+.main > .action:hover{
+    background-color: #0C3B5E;
+}
+.main > .action .img{
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    min-height: 20px;
+}
+.main .profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main .profile .circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    outline: 1px solid white;
+    border-radius: 50%;
+}
+.main .profile .circle .letter{
+    color: white;
+    font-size: 12px;
+}

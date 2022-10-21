@@ -1,0 +1,46 @@
+[contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text)
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: inherit;
+}
+
+.main .magnifying_glass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #B7D3EB;
+    width: 44px;
+    height: 32px;
+    border-radius: 3px 0 0 3px;
+}
+.main .magnifying_glass .img{
+    width: 19px;
+    height: 19px;
+}
+
+.main .input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+
+    width: 306px;
+    height: 32px;
+    background-color: #B7D3EB;
+    color: #2D5879;
+    border: none;
+    font-size: 14px;
+    border-radius: 0 3px 3px 0;
+
+    transition: 0.1s;
+}
+.main .input:focus{
+    outline: none;
+}

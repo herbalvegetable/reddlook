@@ -1,0 +1,83 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-height: 80px;
+}
+
+.header .tabs{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    min-height: 36px;
+}
+.header .tabs > .tab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48.5px;
+    min-height: 34px;
+
+    padding: 0 10px;
+
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width: 0 0 2px 0;
+}
+.header .tabs > .tab:first-of-type{
+    font-weight: 600;
+    border-color: #0F6CBD;
+}
+.header .tabs > .tab .text{
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.header .ribbon_container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 44px;
+}
+.header .ribbon_container .ribbon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 40px;
+    padding: 0 0 0 4px;
+    margin: 0 0 4px 8px;
+
+    border-radius: 4px;
+
+    box-shadow: -1px 2px 4px 0px rgb(201, 201, 201);
+}
+.header .ribbon_container .dropdown{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    min-width: 20px;
+    min-height: 40px;
+}
+.header .ribbon_container .dropdown .img{
+    max-width: 12px;
+    width: 100%;
+    max-height: 12px;
+    height: 100%;
+}
