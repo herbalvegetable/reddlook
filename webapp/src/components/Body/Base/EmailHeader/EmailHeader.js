@@ -3,6 +3,10 @@ import { Image } from 'react-bootstrap';
 
 import styles from './EmailHeader.module.css';
 
+import Action from './Action/Action';
+import ActionWithDropdown from './ActionWithDropdown/ActionWithDropdown';
+import Divider from './Divider/Divider';
+
 const EmailHeader = props => {
 
 
@@ -19,7 +23,62 @@ const EmailHeader = props => {
             </div>
             <div className={styles.ribbon_container}>
                 <div className={styles.ribbon}>
+
+                    <Action 
+                        imgName='menu'/>
+
+                    <div className={styles.new_email_container}>
+                        <div className={styles.new_email}>
+                            <Image 
+                                src={'./media/ribbon/new_email.png'}
+                                className={styles.img}/>
+                            <span className={styles.text}>New email</span>
+                        </div>
+                        <div className={styles.dropdown}>
+
+                        </div>
+                    </div>
+
+                    <ActionWithDropdown 
+                        imgName='delete'/>
+                    <Action 
+                        imgName='archive'/>
+                    <ActionWithDropdown 
+                        imgName='report'/>
+                    <Action 
+                        imgName='sweep'/>
+                    <ActionWithDropdown 
+                        imgName='move_to_folder'/>
+
+                    <Divider />
+
+                    <Action 
+                        imgName='reply'/>
+                    <Action 
+                        imgName='reply_all'/>
+                    <ActionWithDropdown 
+                        imgName='forward'/>
+
+                    <Divider />
+
+                    <ActionWithDropdown 
+                        imgName='categorise'/>
+                    <ActionWithDropdown 
+                        imgName='flag'/>
+                    <Action 
+                        imgName='pin'/>
+                    <ActionWithDropdown 
+                        imgName='snooze'/>
                     
+                    <Divider />
+
+                    <Action 
+                        imgName='undo'/>
+                    
+                    <Divider />
+
+                    <Action
+                        imgName='more'/>
                 </div>
                 <div className={styles.dropdown}>
                     <Image 

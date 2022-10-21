@@ -1,0 +1,14 @@
+.action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 40px;
+
+    background-color: aquamarine;
+}
+.action .img{
+    max-width: 20px;
+    max-height: 20px;
+}

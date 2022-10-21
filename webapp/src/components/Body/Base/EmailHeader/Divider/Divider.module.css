@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 8.8px;
+    min-height: 40px;
+}
+
+.container .line{
+    width: 1px;
+    min-height: 32px;
+
+    background-color: #E5E5E5;
+}

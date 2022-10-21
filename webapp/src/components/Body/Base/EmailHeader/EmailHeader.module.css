@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     width: 100%;
     min-height: 40px;
@@ -67,6 +67,34 @@
 
     box-shadow: -1px 2px 4px 0px rgb(201, 201, 201);
 }
+.header .ribbon_container .ribbon .new_email_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    min-width: 172px;
+    height: inherit;
+    padding: 0 12px 0 9px;
+
+    background-color: rgb(163, 129, 87);
+}
+.header .ribbon_container .ribbon .new_email_container .new_email{
+
+}
+.header .ribbon_container .ribbon .new_email_container .new_email .img{
+    max-width: 24px;
+    max-height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.header .ribbon_container .ribbon .new_email_container .new_email .text{
+    color: white;
+}
+.header .ribbon_container .ribbon .new_email_container .dropdown{
+
+}
+
 .header .ribbon_container .dropdown{
     display: flex;
     align-items: flex-end;
