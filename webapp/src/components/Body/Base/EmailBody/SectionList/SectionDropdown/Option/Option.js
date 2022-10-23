@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
 import styles from './Option.module.css';
 
@@ -7,10 +7,42 @@ const Option = props => {
 
     const { text } = props;
 
+    const [focused, setFocused] = useState(false);
+    const [inputVal, setInputVal] = useState('');
+
     return (
-        <div className={styles.main}>
-            <span className={styles.text}>{text}</span>
-        </div>
+        <>
+        {
+            focused ? 
+
+            <div className={styles.main_focused}>
+                <input 
+                    type='text'
+                    placeholder=''
+                    value={inputVal}
+                    onChange={e => setInputVal(e.target.value)}
+                    className={styles.input}
+                    onBlur={() => setFocused(false)}
+                    autoFocus/>
+                <Button 
+                    className={styles.save_btn}
+                    disabled={inputVal == ''}>
+                    Save
+                </Button>
+            </div>
+
+            :
+
+            <div 
+                className={styles.main} 
+                onClick={() => {
+                    setFocused(true);
+                    setInputVal('');
+                }}>
+                <span className={styles.text}>{text}</span>
+            </div>
+        }
+        </>
     )
 }
 

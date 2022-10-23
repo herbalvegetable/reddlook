@@ -19,3 +19,38 @@
     color: #115EA3;
     font-weight: 400;
 }
+
+.main_focused{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 0 38px;
+
+    min-height: 40px;
+}
+.main_focused .input{
+    max-width: 125px;
+    width: 100%;
+    min-height: 32px;
+
+    border-radius: 3px;
+    border: none;
+    outline: 2px solid #0F6CBD;
+
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main_focused .save_btn{
+    background: none;
+    border: none;
+    margin-left: 1em;
+
+    color: #0F6CBD;
+}
+.main_focused .save_btn:disabled{
+    background: none;
+    border: none;
+    margin-left: 1em;
+
+    color: #e0e0e0;
+}
