@@ -142,7 +142,9 @@
     border-radius: 5px;
     border: 1px solid #E5E5E5;
 
-    margin-right: 4px
+    margin-right: 4px;
+
+    background-color: #fff;
 }
 .header .ribbon_container .ribbon .quick_steps_container .action{
     display: flex;

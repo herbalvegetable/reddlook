@@ -1,5 +1,6 @@
 html{
   height: 100%;
+  overflow: hidden;
 }
 body {
   margin: 0;
@@ -19,3 +20,28 @@ code {
 #root{
   height: calc(100% - 48px);
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #e0e0e0 #fafafa;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #fafafa;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    border: 3px solid #fafafa;
+  }
+  *::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: #98A3A6;
+  }

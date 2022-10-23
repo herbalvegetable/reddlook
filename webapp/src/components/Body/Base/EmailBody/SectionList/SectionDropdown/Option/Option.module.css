@@ -1,0 +1,15 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 0 0 0 74px;
+
+    width: 100%;
+    min-height: 40px;
+}
+
+.main .text{
+    font-size: 14px;
+    color: #0f548c;
+}

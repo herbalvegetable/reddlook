@@ -1,0 +1,32 @@
+.title_container{
+    display: grid;
+    grid-template-columns: 38px 162px;
+    align-items: center;
+
+    width: 100%;
+    min-height: 40px;
+    padding: 0 38px 3px 8px;
+
+    color: #424242;
+    cursor: pointer;
+}
+.title_container:hover{
+    color: #000;
+}
+
+.title_container .img_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title_container .img_container .img{
+    max-width: 12px;
+    max-height: 12px;
+}
+
+.title_container .text{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+}
