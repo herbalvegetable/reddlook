@@ -5,4 +5,8 @@
 
     overflow-y: scroll;
     overflow-x: hidden;
+
+    user-select: none;
+
+    padding-bottom: 30px;
 }

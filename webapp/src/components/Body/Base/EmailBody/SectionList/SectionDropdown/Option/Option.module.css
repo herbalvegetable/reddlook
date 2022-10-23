@@ -7,9 +7,15 @@
 
     width: 100%;
     min-height: 40px;
+    
+    cursor: pointer;
+}
+.main:hover{
+    background-color: #F0F0F0;
 }
 
 .main .text{
     font-size: 14px;
-    color: #0f548c;
+    color: #115EA3;
+    font-weight: 400;
 }
