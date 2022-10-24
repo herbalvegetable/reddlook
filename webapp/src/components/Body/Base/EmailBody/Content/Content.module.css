@@ -1,3 +1,157 @@
 .main{
-    background-color: rgb(206, 206, 206);
+    background-color: inherit;
+}
+
+
+.main .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 32px;
+
+    margin: 8px 19px 8px 8px;
+    padding: 6px 12px;
+
+    border-radius: 4px;
+    border: 1px solid #E6E6E6;
+
+    background-color: #fff;
+}
+.main .header .title{
+    text-align: left;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    margin-right: 0.75em;
+}
+.main .header .zoom_options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.main .header .zoom_options .zoom_in_img{
+    max-width: 18px;
+    max-height: 18px;
+    margin: 0 4px;
+}
+.main .header .zoom_options .dropdown_img{
+    max-width: 10px;
+    max-height: 10px;
+    margin: 0 4px;
+}
+
+
+.main .body{
+    display: grid;
+    grid-template-columns: 52px 1fr;
+
+    margin: 0 20px 8px 8px;
+    padding: 0 12px 12px 12px;
+
+    border-radius: 4px;
+    border: 1px solid #D1D1D1;
+
+    background-color: #fff;
+}
+
+.main .body .profile_icon_container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin: 16px 12px 0 0;
+}
+.main .body .profile_icon_container .profile_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 40px;
+
+    border-radius: 50%;
+    background-color: #118602;
+}
+.main .body .profile_icon_container .profile_icon .text{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.main .body .content{
+    padding: 7px 0 0 0;
+}
+
+.main .body .content .first_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.main .body .content .first_row .author{
+    padding-top: 9px;
+    font-size: 16px;
+}
+.main .body .content .first_row .actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.main .body .content .first_row .actions .action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 2px;
+    padding: 0 4px;
+    min-width: 24px;
+    min-height: 32px;
+}
+.main .body .content .first_row .actions .action .img{
+    max-width: 18px;
+    max-height: 18px;
+    margin: 0 4px;
+}
+
+.main .body .content .second_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 28px;
+}
+.main .body .content .likes{
+    font-size: 14px;
+}
+.main .body .content .time{
+    font-size: 12px;
+    color: #808080;
+}
+
+
+.main .body .body_text{
+    margin: 12px 4px 0 0;
+    text-align: left;
+    font-size: 15px;
+}
+
+
+.main .actions{
+
+}
+.main .actions .action{
+    
+}
+.main .actions .action .img{
+
+}
+.main .actions .action .text{
+
 }

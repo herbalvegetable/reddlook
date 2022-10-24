@@ -5,21 +5,26 @@ import styles from './Email.module.css';
 
 const Email = props => {
 
-    const { author, title, body, unread } = props;
+    const { id, author, title, body, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
 
     const [selected, setSelected] = useState(false);
 
+    useEffect(() => {
+        setSelected(selectedEmailIndex === id);
+    }, [selectedEmailIndex]);
+
     return (
         <div 
-            className={`${styles.main} ${unread ? styles.unread : ''}`}
+            className={`${styles.main} ${unread ? styles.unread : ''} ${selected ? styles.selected : ''}`}
             onMouseOver={() => setIsHover(true)}
-            onMouseOut={() => setIsHover(false)}>
+            onMouseOut={() => setIsHover(false)}
+            onClick={() => setSelectedEmailIndex(id)}>
             <div className={`${styles.profile_icon_container} ${unread ? styles.unread : ''}`}>
             {
-                isHover ? 
+                (isHover || selected) ? 
 
                 <input type='radio' className={styles.radio_btn}/>
 

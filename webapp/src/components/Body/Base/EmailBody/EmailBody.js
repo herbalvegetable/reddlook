@@ -8,13 +8,22 @@ import SectionList from './SectionList/SectionList';
 
 const EmailBody = props => {
 
+    const [selectedEmailIndex, setSelectedEmailIndex] = useState(null);
+    const [selectedEmail, setSelectedEmail] = useState(null);
 
+    useEffect(() => {
+        console.log(selectedEmail);
+    }, [selectedEmail]);
 
     return (
         <div className={styles.main}>
             <SectionList />
-            <Inbox />
-            <Content />
+            <Inbox  
+                selectedEmailIndex={selectedEmailIndex}
+                setSelectedEmailIndex={setSelectedEmailIndex}
+                setSelectedEmail={setSelectedEmail}/>
+            <Content 
+                selectedEmail={selectedEmail}/>
         </div>
     )
 }

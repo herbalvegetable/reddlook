@@ -7,6 +7,8 @@ import Email from './Email/Email';
 
 const Inbox = props => {
 
+    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmail } = props;
+
     const [emails, setEmails] = useState([
         {
             author: 'u/Maximum_Afternoon_40',
@@ -22,7 +24,7 @@ const Inbox = props => {
         },
         {
             author: 'dabalabibala',
-            title: 'how do you memorise?',
+            title: 'An event not to be missed! - NP’s very own Future of Green & Sustainable Work Panel Discussion, happening on Thursday 27 October, 4.30pm – 5.30pm.',
             body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
             unread: true,
         },
@@ -126,8 +128,8 @@ const Inbox = props => {
     ]);
 
     useEffect(() => {
-
-    }, []);
+        setSelectedEmail(emails[selectedEmailIndex] || null);
+    }, [selectedEmailIndex]);
 
     return (
         <div className={styles.main}>
@@ -160,7 +162,10 @@ const Inbox = props => {
                 emails.map((email, i) => {
                     return <Email 
                         key={i.toString()}
-                        {...email}/>
+                        id={i}
+                        {...email}
+                        selectedEmailIndex={selectedEmailIndex}
+                        setSelectedEmailIndex={setSelectedEmailIndex}/>
                 })
             }
             </div>

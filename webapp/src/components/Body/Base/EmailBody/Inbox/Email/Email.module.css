@@ -13,6 +13,9 @@
 .main:hover{
     background-color: #FAFAFA;
 }
+.main.selected{
+    background-color: #CFE4FA;
+}
 
 .main .profile_icon_container{
     display: flex;
