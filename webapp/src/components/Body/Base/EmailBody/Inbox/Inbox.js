@@ -128,7 +128,7 @@ const Inbox = props => {
     ]);
 
     useEffect(() => {
-        setSelectedEmail(emails[selectedEmailIndex] || null);
+        setSelectedEmail(emails[selectedEmailIndex] || {});
     }, [selectedEmailIndex]);
 
     return (

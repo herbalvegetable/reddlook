@@ -32,6 +32,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+
+    padding: 0.5em 0.25em;
+}
+.main .header .zoom_options:hover{
+    background-color: #F5F5F5;
 }
 .main .header .zoom_options .zoom_in_img{
     max-width: 18px;
@@ -113,6 +118,9 @@
     min-width: 24px;
     min-height: 32px;
 }
+.main .body .content .first_row .actions .action:hover{
+    background-color: #EBF3FC;
+}
 .main .body .content .first_row .actions .action .img{
     max-width: 18px;
     max-height: 18px;
@@ -143,15 +151,39 @@
 }
 
 
-.main .actions{
+.main .bottom_actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 
+    margin-top: 12px;
 }
-.main .actions .action{
-    
-}
-.main .actions .action .img{
+.main .bottom_actions .action{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-}
-.main .actions .action .text{
+    padding: 6px 10px;
+    margin: 4px 0 0 4px;
 
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+
+    background-color: #fff;
+}
+.main .bottom_actions .action:hover{
+    background-color: #EBF3FC;
+}
+.main .bottom_actions .action .img{
+    max-width: 16px;
+    max-height: 16px;
+
+    margin: 0 8px 0 4px;
+}
+.main .bottom_actions .action .text{
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
 }

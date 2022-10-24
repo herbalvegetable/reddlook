@@ -9,10 +9,11 @@ import SectionList from './SectionList/SectionList';
 const EmailBody = props => {
 
     const [selectedEmailIndex, setSelectedEmailIndex] = useState(null);
-    const [selectedEmail, setSelectedEmail] = useState(null);
+    const [selectedEmail, setSelectedEmail] = useState({});
 
     useEffect(() => {
         console.log(selectedEmail);
+        console.log(Object.keys(selectedEmail).length > 0);
     }, [selectedEmail]);
 
     return (
@@ -22,7 +23,8 @@ const EmailBody = props => {
                 selectedEmailIndex={selectedEmailIndex}
                 setSelectedEmailIndex={setSelectedEmailIndex}
                 setSelectedEmail={setSelectedEmail}/>
-            <Content 
+            <Content
+                selectedEmailIndex={selectedEmailIndex}
                 selectedEmail={selectedEmail}/>
         </div>
     )
