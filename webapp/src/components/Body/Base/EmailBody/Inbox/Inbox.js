@@ -7,128 +7,29 @@ import Email from './Email/Email';
 
 const Inbox = props => {
 
-    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmail } = props;
+    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId } = props;
 
-    const [emails, setEmails] = useState([
-        {
-            author: 'u/Maximum_Afternoon_40',
-            title: '[O levels] urgent help for SS',
-            body: 'Yep I am failing SS 😭😭 idk every since the start of sec 4, I’ve always failed SS 🥲 despite memorising format for SBQ. I still end up failing cause I “misinterpret” the sources wrongly… any tips on it? Those around me always score quite high for their papers and honestly idek how they are doing it :,) There are so many bloody topics for SRQ so ig that’s the end of me for S',
-            unread: false,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'An event not to be missed! - NP’s very own Future of Green & Sustainable Work Panel Discussion, happening on Thursday 27 October, 4.30pm – 5.30pm.',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        {
-            author: 'dabalabibala',
-            title: 'how do you memorise?',
-            body: 'hey guys, ive been rememorising all the chemistry content and i was curious how you fellers memorise? i usually write out or type out what im reading in order to memorise, what about you? good luck for os!',
-            unread: true,
-        },
-        
-    ]);
+    const [emails, setEmails] = useState([]);
 
     useEffect(() => {
-        setSelectedEmail(emails[selectedEmailIndex] || {});
+        const subredditName = 'sgexams';
+
+        fetch(`http://localhost:5000/${subredditName}/hot`)
+            .then(res => res.json()
+                .then(data => {
+                    console.log(data);
+                    setEmails(data);
+                })
+                .catch(err => console.log(err)))
+            .catch(err => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        console.log(selectedEmailIndex);
+        if(selectedEmailIndex != null){
+            console.log(emails[selectedEmailIndex].id || null);
+            setSelectedEmailId(emails[selectedEmailIndex].id || null);
+        }
     }, [selectedEmailIndex]);
 
     return (
@@ -162,7 +63,7 @@ const Inbox = props => {
                 emails.map((email, i) => {
                     return <Email 
                         key={i.toString()}
-                        id={i}
+                        index={i}
                         {...email}
                         selectedEmailIndex={selectedEmailIndex}
                         setSelectedEmailIndex={setSelectedEmailIndex}/>

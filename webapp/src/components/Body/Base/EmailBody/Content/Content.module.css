@@ -60,7 +60,7 @@
     padding: 0 12px 12px 12px;
 
     border-radius: 4px;
-    border: 1px solid #D1D1D1;
+    border: 1px solid #424242;
 
     background-color: #fff;
 }
@@ -122,6 +122,8 @@
     padding: 0 4px;
     min-width: 24px;
     min-height: 32px;
+
+    border-radius: 4px;
 }
 .main .body .content .first_row .actions .action:hover{
     background-color: #EBF3FC;
@@ -139,10 +141,13 @@
     justify-content: space-between;
 
     min-height: 28px;
+    margin-top: 0.2em;
 
     user-select: none;
 }
 .main .body .content .likes{
+    text-align: left;
+
     font-size: 14px;
 }
 .main .body .content .time{
@@ -155,6 +160,8 @@
     margin: 12px 4px 0 0;
     text-align: left;
     font-size: 14px;
+
+    line-height: 1.6;
 }
 
 

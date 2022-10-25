@@ -5,7 +5,7 @@ import styles from './Email.module.css';
 
 const Email = props => {
 
-    const { id, author, title, body, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
+    const { index, author, title, body, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
@@ -13,7 +13,7 @@ const Email = props => {
     const [selected, setSelected] = useState(false);
 
     useEffect(() => {
-        setSelected(selectedEmailIndex === id);
+        setSelected(selectedEmailIndex === index);
     }, [selectedEmailIndex]);
 
     return (
@@ -21,7 +21,7 @@ const Email = props => {
             className={`${styles.main} ${unread ? styles.unread : ''} ${selected ? styles.selected : ''}`}
             onMouseOver={() => setIsHover(true)}
             onMouseOut={() => setIsHover(false)}
-            onClick={() => setSelectedEmailIndex(id)}>
+            onClick={() => setSelectedEmailIndex(index)}>
             <div className={`${styles.profile_icon_container} ${unread ? styles.unread : ''}`}>
             {
                 (isHover || selected) ? 

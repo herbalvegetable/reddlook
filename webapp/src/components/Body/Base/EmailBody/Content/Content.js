@@ -5,17 +5,36 @@ import styles from './Content.module.css';
 
 const Content = props => {
 
-    const { selectedEmail } = props;
+    const { selectedEmailId } = props;
 
-    const { author, title, body, unread } = selectedEmail;
+    // const { author, title, body, unread } = selectedEmail;
+
+    const [selectedEmail, setSelectedEmail] = useState({});
+
+    useEffect(() => {
+        const subredditName = 'sgexams';
+
+        if(selectedEmailId){
+            fetch(`http://localhost:5000/${subredditName}/post/${selectedEmailId}`)
+                .then(res => res.json()
+                    .then(data => {
+                        console.log(data);
+                        setSelectedEmail(data);
+                    })
+                    .catch(err => console.log(err))
+                )
+                .catch(err => console.log(err));
+        }
+    }, [selectedEmailId]);
 
     return (
+        
         <div className={styles.main}>
             {
                 Object.keys(selectedEmail).length > 0 ?
                 <>
                     <div className={styles.header}>
-                        <span className={styles.title}>{title}</span>
+                        <span className={styles.title}>{selectedEmail.title}</span>
                         <div className={styles.zoom_options}>
                             <Image 
                                 src={'./media/content/zoom_in.png'}
@@ -29,14 +48,14 @@ const Content = props => {
 
                         <div className={styles.profile_icon_container}>
                             <div className={styles.profile_icon}>
-                                <span className={styles.text}>{author.slice(0, 2).toUpperCase()}</span>
+                                <span className={styles.text}>{selectedEmail.author.slice(0, 2).toUpperCase()}</span>
                             </div>
                         </div>
 
                         <div className={styles.content}>
 
                             <div className={styles.first_row}>
-                                <span className={styles.author}>{author}</span>
+                                <span className={styles.author}>{selectedEmail.author}</span>
                                 <div className={styles.actions}>
                                     <div className={styles.action}>
                                         <Image 
@@ -76,7 +95,7 @@ const Content = props => {
                             </div>
 
                             <div className={styles.body_text}>
-                                {body}
+                                {selectedEmail.body}
                             </div>
 
                             <div className={styles.bottom_actions}>
