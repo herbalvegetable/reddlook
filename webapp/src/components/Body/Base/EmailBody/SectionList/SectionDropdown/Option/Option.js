@@ -5,10 +5,11 @@ import styles from './Option.module.css';
 
 const Option = props => {
 
-    const { text } = props;
+    const { text, addSection } = props;
 
     const [focused, setFocused] = useState(false);
     const [inputVal, setInputVal] = useState('');
+    const [isHoveringSaveBtn, setIsHoveringSaveBtn] = useState(false);
 
     return (
         <>
@@ -22,11 +23,22 @@ const Option = props => {
                     value={inputVal}
                     onChange={e => setInputVal(e.target.value)}
                     className={styles.input}
-                    onBlur={() => setFocused(false)}
+                    onBlur={() => {
+                        if(isHoveringSaveBtn) return;
+                        setFocused(false)
+                    }}
                     autoFocus/>
                 <Button 
                     className={styles.save_btn}
-                    disabled={inputVal == ''}>
+                    disabled={inputVal == ''}
+                    onClick={() => {
+                        if(inputVal == '') return;
+                        addSection(inputVal);
+                        setFocused(false);
+                        setInputVal('');
+                    }}
+                    onMouseEnter={() => setIsHoveringSaveBtn(true)}
+                    onMouseLeave={() => setIsHoveringSaveBtn(false)}>
                     Save
                 </Button>
             </div>

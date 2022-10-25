@@ -10,6 +10,7 @@
     justify-content: space-between;
 
     min-height: 32px;
+    max-width: calc(100vw - 644px);
 
     margin: 8px 19px 8px 8px;
     padding: 6px 12px;
@@ -18,6 +19,8 @@
     border: 1px solid #E6E6E6;
 
     background-color: #fff;
+
+    overflow-x: hidden
 }
 .main .header .title{
     text-align: left;
@@ -51,21 +54,32 @@
     margin: 0 4px;
 }
 
+.main .body_container{
+    max-height: calc(100vh - 192px);
+    max-width: calc(100vw - 644px);
 
-.main .body{
+    border-radius: 4px;
+
+    margin: 0 7px 8px 8px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.main .body_container .body{
     display: grid;
     grid-template-columns: 52px 1fr;
-
-    margin: 0 20px 8px 8px;
-    padding: 0 12px 12px 12px;
 
     border-radius: 4px;
     border: 1px solid #424242;
 
+    padding: 0 12px 0.75em 12px;
+    margin-bottom: 3em;
+
     background-color: #fff;
+
+    
 }
 
-.main .body .profile_icon_container{
+.main .body_container .body .profile_icon_container{
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -74,7 +88,7 @@
 
     user-select: none;
 }
-.main .body .profile_icon_container .profile_icon{
+.main .body_container .body .profile_icon_container .profile_icon{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,17 +99,18 @@
     border-radius: 50%;
     background-color: #118602;
 }
-.main .body .profile_icon_container .profile_icon .text{
+.main .body_container .body .profile_icon_container .profile_icon .text{
     font-size: 16px;
     font-weight: 600;
     color: #fff;
 }
 
-.main .body .content{
+.main .body_container .body .content{
     padding: 7px 0 0 0;
+    
 }
 
-.main .body .content .first_row{
+.main .body_container .body .content .first_row{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,17 +118,17 @@
 
     user-select: none;
 }
-.main .body .content .first_row .author{
+.main .body_container .body .content .first_row .author{
     padding-top: 9px;
     font-size: 16px;
 }
-.main .body .content .first_row .actions{
+.main .body_container .body .content .first_row .actions{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
 }
-.main .body .content .first_row .actions .action{
+.main .body_container .body .content .first_row .actions .action{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,16 +140,16 @@
 
     border-radius: 4px;
 }
-.main .body .content .first_row .actions .action:hover{
+.main .body_container .body .content .first_row .actions .action:hover{
     background-color: #EBF3FC;
 }
-.main .body .content .first_row .actions .action .img{
+.main .body_container .body .content .first_row .actions .action .img{
     max-width: 18px;
     max-height: 18px;
     margin: 0 4px;
 }
 
-.main .body .content .second_row{
+.main .body_container .body .content .second_row{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -145,18 +160,21 @@
 
     user-select: none;
 }
-.main .body .content .likes{
+.main .body_container .body .content .likes{
     text-align: left;
 
     font-size: 14px;
 }
-.main .body .content .time{
+.main .body_container .body .content .time{
     font-size: 12px;
     color: #808080;
 }
 
 
-.main .body .body_text{
+.main .body_container .body .body_text{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
     margin: 12px 4px 0 0;
     text-align: left;
     font-size: 14px;

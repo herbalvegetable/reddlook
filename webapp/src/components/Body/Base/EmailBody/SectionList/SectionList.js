@@ -12,6 +12,7 @@ const SectionList = props => {
                 title: 'Inbox',
                 imgName: 'inbox',
                 unreadNum: 2045,
+                highlighted: true,
             },
             {
                 title: 'Sent Items',
@@ -38,6 +39,7 @@ const SectionList = props => {
                 title: 'Inbox',
                 imgName: 'inbox',
                 unreadNum: 2045,
+                highlighted: true,
             },
             {
                 title: 'Sent Items',
@@ -63,36 +65,6 @@ const SectionList = props => {
             },
             {
                 title: 'Notes',
-                imgName: '',
-            },
-
-
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
-                imgName: '',
-            },
-            {
-                title: 'test_folder',
                 imgName: '',
             },
         ],

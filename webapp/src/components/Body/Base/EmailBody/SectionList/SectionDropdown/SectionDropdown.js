@@ -14,6 +14,14 @@ const SectionDropdown = props => {
     const [sections, setSections] = useState(sects || []);
     const [options, setOptions] = useState(opts || []);
 
+    const addSection = sectionTitle => {
+        setSections([...sections, {
+            title: sectionTitle,
+            imgName: '',
+            subreddit: sectionTitle,
+        }]);
+    }
+
     return (
         <>
             <div className={styles.title_container}>
@@ -38,7 +46,8 @@ const SectionDropdown = props => {
                         options.map((option, i) => {
                             return <Option
                                 key={i.toString()}
-                                text={option}/>
+                                text={option}
+                                addSection={addSection}/>
                         })
                     }
                 </>

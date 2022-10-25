@@ -43,6 +43,10 @@
     text-align: right;
 
     font-size: 14px;
+    font-weight: 350;
+    color: #424242;
+}
+.main .text_container .unread_num.highlighted{
     font-weight: 600;
-    color: #2C2C2C;
+    color: #0f548c;
 }

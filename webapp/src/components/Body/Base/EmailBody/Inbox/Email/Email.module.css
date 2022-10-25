@@ -134,10 +134,12 @@
     padding-left: 16px;
 }
 .main .content .middle_row .time.unread{
+    font-weight: 600;
     color: #0f6cbd;
 }
 .main .content .body{
     max-width: 240px;
+    min-height: 20px;
     font-size: 14px;
 
     white-space: nowrap; 

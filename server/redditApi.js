@@ -10,7 +10,7 @@ const r = new snoowrap({
 
 const getHotPostsBasic = async subredditName => {
     try{
-        const posts = await r.getSubreddit(subredditName).getHot({count: 30});
+        const posts = await r.getSubreddit(subredditName).getHot({limit: 100});
         const basicDetails = posts.map((post, i) => {
             return {
                 id: post.id,
@@ -33,10 +33,11 @@ const getHotPostsBasic = async subredditName => {
 const getPost = async postId => {
     try{
         const rawPost = await r.getSubmission(postId).fetch();
+        console.log(rawPost);
         const post = {
             author: rawPost.author.name,
             title: rawPost.title,
-            body: rawPost.selftext,
+            body: rawPost.selftext_html,
             time: rawPost.created_utc,
             score: rawPost.score,
             num_comments: rawPost.num_comments,

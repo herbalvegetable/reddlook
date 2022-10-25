@@ -1,28 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Image } from 'react-bootstrap';
 
 import styles from './Inbox.module.css';
 
+import GlobalContext from '../../../../../context/GlobalContext';
 import Email from './Email/Email';
 
 const Inbox = props => {
+
+    const { subreddit, setSubreddit } = useContext(GlobalContext);
 
     const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId } = props;
 
     const [emails, setEmails] = useState([]);
 
     useEffect(() => {
-        const subredditName = 'sgexams';
-
-        fetch(`http://localhost:5000/${subredditName}/hot`)
-            .then(res => res.json()
-                .then(data => {
-                    console.log(data);
-                    setEmails(data);
-                })
-                .catch(err => console.log(err)))
-            .catch(err => console.log(err));
-    }, []);
+        if(subreddit){
+            fetch(`http://localhost:5000/${subreddit}/hot`)
+                .then(res => res.json()
+                    .then(data => {
+                        console.log(data);
+                        setEmails(data);
+                    })
+                    .catch(err => console.log(err)))
+                .catch(err => console.log(err));
+        }
+    }, [subreddit]);
 
     useEffect(() => {
         console.log(selectedEmailIndex);

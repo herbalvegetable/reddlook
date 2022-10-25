@@ -3,9 +3,11 @@ import { Image } from 'react-bootstrap';
 
 import styles from './Email.module.css';
 
+import { convertSecondsToShortDate } from '../../../../../../hooks/useConvertSecondsToDate';
+
 const Email = props => {
 
-    const { index, author, title, body, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
+    const { index, author, title, body, score, comments_num, time, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
@@ -61,7 +63,7 @@ const Email = props => {
                 </div>
                 <div className={styles.middle_row}>
                     <div className={`${styles.title} ${unread ? styles.unread : ''}`}>{title}</div>
-                    <div className={`${styles.time} ${unread ? styles.unread : ''}`}>Sun 15:11</div>
+                    <div className={`${styles.time} ${unread ? styles.unread : ''}`}>{convertSecondsToShortDate(time)}</div>
                 </div>
                 <div className={`${styles.body} ${unread ? styles.unread : ''}`}>{body}</div>
             </div>
