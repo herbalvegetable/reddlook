@@ -7,6 +7,7 @@ import styles from './Content.module.css';
 
 import GlobalContext from '../../../../../context/GlobalContext';
 import { convertSecondsToDate } from '../../../../../hooks/useConvertSecondsToDate';
+import Comment from './Comment/Comment';
 
 const Content = props => {
 
@@ -17,6 +18,7 @@ const Content = props => {
     // const { author, title, body, unread } = selectedEmail;
 
     const [selectedEmail, setSelectedEmail] = useState({});
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         if(selectedEmailId && subreddit){
@@ -24,6 +26,7 @@ const Content = props => {
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);
+                        setComments(data.comments);
                     })
                     .catch(err => console.log(err))
                 )
@@ -62,7 +65,7 @@ const Content = props => {
                             <div className={styles.content}>
 
                                 <div className={styles.first_row}>
-                                    <span className={styles.author}>{selectedEmail.author}</span>
+                                    <span className={styles.author}>{selectedEmail.author} {"<no-reply@reddlook.com>"}</span>
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
                                             <Image 
@@ -94,7 +97,7 @@ const Content = props => {
 
                                 <div className={styles.second_row}>
                                     <div className={styles.likes}>
-                                        Cc: Yam Lao Tay /CSF, Calvin Lee /CSF +{selectedEmail.score} others
+                                        Cc: Yam Lao Tay /CSF, Calvin Lee /CSF <span className={styles.score}>+{selectedEmail.score} others</span>
                                     </div>
                                     <div className={styles.time}>
                                         {convertSecondsToDate(selectedEmail.time)}
@@ -103,6 +106,22 @@ const Content = props => {
 
                                 <div className={styles.body_text}>
                                     {parse(selectedEmail.body)}
+                                </div>
+
+                                <div className={styles.comment_list}>
+                                {
+                                    comments.map((comment, i) => {
+                                        return <Comment 
+                                            key={i.toString()}
+                                            id={comment.id}
+                                            author={comment.author.name}
+                                            body={comment.body_html}
+                                            score={comment.score}
+                                            time={comment.created_utc}
+                                            replies={comment.replies}
+                                            />
+                                    })
+                                }
                                 </div>
 
                                 <div className={styles.bottom_actions}>

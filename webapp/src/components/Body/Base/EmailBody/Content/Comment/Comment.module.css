@@ -1,0 +1,11 @@
+.main{
+
+    margin: 0 0 0.75em 0;
+    padding: 0 0 0 0.5em;
+
+    border-left: 2px solid #424242;
+}
+.main .body_text{
+    text-align: left;
+    font-size: 14px;
+}

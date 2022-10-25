@@ -21,6 +21,8 @@ const Inbox = props => {
                     .then(data => {
                         console.log(data);
                         setEmails(data);
+
+                        setSelectedEmailIndex(0);
                     })
                     .catch(err => console.log(err)))
                 .catch(err => console.log(err));
