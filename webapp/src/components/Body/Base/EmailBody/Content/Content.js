@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import parse from 'html-react-parser';
 import randomColor from "randomcolor";
@@ -8,6 +8,7 @@ import styles from './Content.module.css';
 import GlobalContext from '../../../../../context/GlobalContext';
 import { convertSecondsToDate } from '../../../../../hooks/useConvertSecondsToDate';
 import Comment from './Comment/Comment';
+import SmallImage from './SmallImage/SmallImage';
 
 const Content = props => {
 
@@ -15,10 +16,13 @@ const Content = props => {
 
     const { selectedEmailId } = props;
 
+    const bodyEl = useRef(null);
+
     // const { author, title, body, unread } = selectedEmail;
 
     const [selectedEmail, setSelectedEmail] = useState({});
     const [comments, setComments] = useState([]);
+    const [imgList, setImgList] = useState([]);
 
     useEffect(() => {
         if(selectedEmailId && subreddit){
@@ -27,6 +31,14 @@ const Content = props => {
                     .then(data => {
                         setSelectedEmail(data);
                         setComments(data.comments);
+                        setImgList(data.imgList);
+
+                        console.log(bodyEl.current);
+                        bodyEl?.current?.scrollTo({
+                            top: 0,
+                            // behavior: 'smooth',
+                        });
+                        console.log(bodyEl.current.scrollY);
                     })
                     .catch(err => console.log(err))
                 )
@@ -51,7 +63,7 @@ const Content = props => {
                                 className={styles.dropdown_img}/>
                         </div>
                     </div>
-                    <div className={styles.body_container}>
+                    <div className={styles.body_container} ref={bodyEl}>
                         <div className={styles.body}>
 
                             <div className={styles.profile_icon_container}>
@@ -104,9 +116,59 @@ const Content = props => {
                                     </div>
                                 </div>
 
-                                <div className={styles.body_text}>
-                                    {parse(selectedEmail.body)}
-                                </div>
+                                {
+                                    selectedEmail.body ?
+
+                                    <div className={styles.body_text}>
+                                        {parse(selectedEmail.body)}
+                                    </div>
+
+                                    :
+
+                                    null
+                                }
+
+                                {
+
+                                    (imgList && imgList.length > 0) ?
+
+                                    <div className={styles.img_list}>
+                                    {
+                                        imgList.map((imgData, i) => {
+                                            return <SmallImage 
+                                                key={i.toString()}
+                                                {...imgData}/>
+                                        })
+                                    }
+                                    </div>
+
+                                    :
+
+                                    selectedEmail.imgUrl ?
+
+                                    <div className={styles.img_single}>
+                                        <SmallImage 
+                                            imgSrc={selectedEmail.imgUrl}/>
+                                    </div>
+
+                                    : null
+                                }
+
+                                {
+                                    selectedEmail.url ?
+
+                                    <div className={styles.url_text}>
+                                        <a 
+                                            className={styles.hyperlink}
+                                            href={selectedEmail.url}>
+                                            {selectedEmail.url}
+                                        </a>
+                                    </div>
+
+                                    :
+
+                                    null
+                                }
 
                                 <div className={styles.comment_list}>
                                 {

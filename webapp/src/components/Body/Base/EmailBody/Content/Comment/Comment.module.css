@@ -11,11 +11,15 @@
 .main.topmost{
     margin-bottom: 1.5em;
 }
+.main.bottommost{
+    margin-bottom: 0;
+}
 
 .main .author{
     text-align: left;
 
     font-size: 12px;
+    color: rgb(125, 125, 125);
 }
 
 .main .body_text{

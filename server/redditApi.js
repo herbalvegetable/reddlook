@@ -11,7 +11,12 @@ const r = new snoowrap({
 
 const getHotPostsBasic = async subredditName => {
     try{
-        const posts = await r.getSubreddit(subredditName).getHot({limit: 100});
+        const posts = await r.getSubreddit(subredditName).getHot({limit: 65});
+        // console.log(posts.map(post => {
+        //     let p = {...post}
+        //     delete p.comments;
+        //     return p;
+        // }));
         const basicDetails = posts.map((post, i) => {
             return {
                 id: post.id,
@@ -38,7 +43,11 @@ const getHotPostsBasic = async subredditName => {
 const getPost = async postId => {
     try{
         const rawPost = await r.getSubmission(postId).fetch();
-        console.log(rawPost);
+
+        let p = {...rawPost};
+        delete p.comments;
+        console.log(p);
+
         const post = {
             author: rawPost.author.name,
             title: rawPost.title,
@@ -47,6 +56,23 @@ const getPost = async postId => {
             score: rawPost.score,
             commentsNum: rawPost.num_comments,
             comments: rawPost.comments,
+
+            url: rawPost.url,
+            imgUrl: rawPost.preview?.images[0]?.source?.url || null,
+            imgList: 
+                rawPost.media_metadata ? 
+                
+                Object.keys(rawPost.media_metadata).map(imgId => {
+                    const imgSrc = rawPost.media_metadata[imgId]?.s?.u;
+                    const caption = rawPost.gallery_data?.items?.find(media => media.media_id == imgId).caption || '';
+
+                    return {
+                        imgSrc,
+                        caption,
+                    }
+                })
+
+                : [],
         }
         return post;
     }

@@ -1,0 +1,16 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 1em 0 0;
+    opacity: 0.3;
+}
+.main:hover{
+    opacity: 1;
+}
+
+.main .img{
+    max-width: 7.5em;
+    border-radius: 3px;
+}

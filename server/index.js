@@ -12,8 +12,9 @@ app.use(cors());
 
 // Reddit API
 // (async () => {
-    // console.log(await getHotPostsBasic('sgexams'));
-    // console.log(await getPost('yc6kew'));
+//     let p = {...await getPost('yd3ob9')}
+//     delete p.comments;
+//     console.log(p);
 // })();
 
 app.get('/:subredditName/hot', async (req, res) => {

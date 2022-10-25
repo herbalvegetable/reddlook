@@ -194,6 +194,31 @@
     word-break: break-word;
 }
 
+.main .body_container .body .img_list{
+    display: flex;
+    justify-content: flex-start;
+
+    flex-wrap: wrap;
+
+    margin: 12px 4px 1.5em 0;
+}
+
+.main .body_container .body .img_single{
+    display: flex;
+    justify-content: flex-start;
+
+    margin: 12px 4px 1.5em 0;
+}
+
+.main .body_container .body .url_text{
+    display: flex;
+    justify-content: flex-start;
+
+    margin: 12px 4px 1.5em 0;
+}
+.main .body_container .body .url_text .hyperlink{
+    font-size: 12px;
+}
 
 .main .bottom_actions{
     display: flex;

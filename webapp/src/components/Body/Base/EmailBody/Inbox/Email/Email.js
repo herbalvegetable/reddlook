@@ -79,7 +79,9 @@ const Email = props => {
                     <div className={`${styles.title} ${unread ? styles.unread : ''}`}>{title}</div>
                     <div className={`${styles.time} ${unread ? styles.unread : ''}`}>{convertSecondsToShortDate(time)}</div>
                 </div>
-                <div className={`${styles.body} ${unread ? styles.unread : ''}`}>{body}</div>
+                <div className={`${styles.body} ${unread ? styles.unread : ''}`}>
+                    {body || 'CAUTION: This email is from the Internet. Do not click on links or attachments if you are unsure of the source.'}
+                </div>
             </div>
 
             <div className={styles.space_container}>
