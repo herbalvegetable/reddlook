@@ -1,4 +1,5 @@
 const snoowrap = require('snoowrap');
+const randomColor = require('randomcolor');
 
 const r = new snoowrap({
     userAgent: 'My Post Scraper Bot',
@@ -19,8 +20,12 @@ const getHotPostsBasic = async subredditName => {
                 body: post.selftext.slice(0, 50),
                 time: post.created_utc,
                 score: post.score,
-                num_comments: post.num_comments,
+                commentsNum: post.num_comments,
                 unread: true,
+
+                profileIconColour: randomColor({
+                    luminosity: 'dark',
+                }),
             }
         });
         return basicDetails;
@@ -40,7 +45,7 @@ const getPost = async postId => {
             body: rawPost.selftext_html,
             time: rawPost.created_utc,
             score: rawPost.score,
-            num_comments: rawPost.num_comments,
+            commentsNum: rawPost.num_comments,
             comments: rawPost.comments,
         }
         return post;

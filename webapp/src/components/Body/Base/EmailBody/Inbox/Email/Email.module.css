@@ -4,7 +4,7 @@
 
     width: inherit;
     height: 100%;
-    max-height: 80px;
+    min-height: 80px;
 
     border-top: 1px solid #f5f5f5;
 
@@ -41,7 +41,7 @@
     min-height: 32px;
 
     border-radius: 50%;
-    background-color: #118602;
+    /* background-color: #118602; */
 }
 .main .profile_icon_container .profile_icon .text{
     font-size: 14px;

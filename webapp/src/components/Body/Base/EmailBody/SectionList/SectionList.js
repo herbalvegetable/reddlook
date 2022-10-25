@@ -67,6 +67,28 @@ const SectionList = props => {
                 title: 'Notes',
                 imgName: '',
             },
+
+            // Example Subreddits
+            {
+                title: 'bestofredditorupdates',
+                imgName: '',
+                subreddit: 'bestofredditorupdates',
+            },
+            {
+                title: 'sgexams',
+                imgName: '',
+                subreddit: 'sgexams',
+            },
+            {
+                title: 'relationship_advice',
+                imgName: '',
+                subreddit: 'relationship_advice',
+            },
+            {
+                title: 'unresolvedmysteries',
+                imgName: '',
+                subreddit: 'unresolvedmysteries',
+            },
         ],
         options: [
             'Create new folder',

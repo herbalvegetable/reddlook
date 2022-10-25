@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Image } from 'react-bootstrap';
 
 import styles from './Email.module.css';
 
+import GlobalContext from '../../../../../../context/GlobalContext';
 import { convertSecondsToShortDate } from '../../../../../../hooks/useConvertSecondsToDate';
 
 const Email = props => {
 
-    const { index, author, title, body, score, comments_num, time, unread, selectedEmailIndex, setSelectedEmailIndex } = props;
+    const { profileIconColour: profileIconColourCtx, setProfileIconColour: setProfileIconColourCtx } = useContext(GlobalContext);
+
+    const { index, author, title, body, score, commentsNum, time, unread, profileIconColour, selectedEmailIndex, setSelectedEmailIndex, markRead, markUnread } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
@@ -15,7 +18,10 @@ const Email = props => {
     const [selected, setSelected] = useState(false);
 
     useEffect(() => {
-        setSelected(selectedEmailIndex === index);
+        const isSelected = selectedEmailIndex === index;
+
+        setSelected(isSelected);
+        isSelected && setProfileIconColourCtx(profileIconColour);
     }, [selectedEmailIndex]);
 
     return (
@@ -23,7 +29,10 @@ const Email = props => {
             className={`${styles.main} ${unread ? styles.unread : ''} ${selected ? styles.selected : ''}`}
             onMouseOver={() => setIsHover(true)}
             onMouseOut={() => setIsHover(false)}
-            onClick={() => setSelectedEmailIndex(index)}>
+            onClick={() => {
+                setSelectedEmailIndex(index);
+                markRead(index);
+            }}>
             <div className={`${styles.profile_icon_container} ${unread ? styles.unread : ''}`}>
             {
                 (isHover || selected) ? 
@@ -32,7 +41,7 @@ const Email = props => {
 
                 :
 
-                <div className={styles.profile_icon}>
+                <div className={styles.profile_icon} style={{backgroundColor: profileIconColour,}}>
                     <span className={styles.text}>{author.slice(0, 2).toUpperCase()}</span>
                 </div>
             }
@@ -43,7 +52,12 @@ const Email = props => {
                     <div className={`${styles.author} ${unread ? styles.unread : ''}`}>{author}</div>
                     {
                         isHover && <div className={styles.actions}>
-                            <div className={styles.action}>
+                            <div 
+                                className={styles.action}
+                                onClick={e => {
+                                    e.stopPropagation();
+                                    markUnread(index);
+                                }}>
                                 <Image 
                                     src='./media/inbox/mark_unread.png'
                                     className={styles.img}/>

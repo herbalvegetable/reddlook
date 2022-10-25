@@ -4,10 +4,13 @@
 
     export default function ContextWrapper(props){
         const [subreddit, setSubreddit] = useState('sgexams');
+        const [profileIconColour, setProfileIconColour] = useState('rgb(0,0,0)');
         return (
             <GlobalContext.Provider value={{
                 subreddit,
                 setSubreddit,
+                profileIconColour,
+                setProfileIconColour,
                 }}>
                 {props.children}
             </GlobalContext.Provider>

@@ -35,6 +35,21 @@ const Inbox = props => {
         }
     }, [selectedEmailIndex]);
 
+    const markRead = index => {
+        if(!emails[index].unread) return;
+        
+        let newEmails = emails;
+        newEmails[index].unread = false;
+        setEmails(newEmails);
+    }
+    const markUnread = index => {
+        if(emails[index].unread) return;
+        
+        let newEmails = emails;
+        newEmails[index].unread = true;
+        setEmails(newEmails);
+    }
+
     return (
         <div className={styles.main}>
 
@@ -69,7 +84,9 @@ const Inbox = props => {
                         index={i}
                         {...email}
                         selectedEmailIndex={selectedEmailIndex}
-                        setSelectedEmailIndex={setSelectedEmailIndex}/>
+                        setSelectedEmailIndex={setSelectedEmailIndex}
+                        markRead={markRead}
+                        markUnread={markUnread}/>
                 })
             }
             </div>

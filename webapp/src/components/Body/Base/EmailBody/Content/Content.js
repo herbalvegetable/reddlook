@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import parse from 'html-react-parser';
+import randomColor from "randomcolor";
 
 import styles from './Content.module.css';
 
@@ -9,7 +10,7 @@ import { convertSecondsToDate } from '../../../../../hooks/useConvertSecondsToDa
 
 const Content = props => {
 
-    const { subreddit, setSubreddit } = useContext(GlobalContext);
+    const { subreddit, profileIconColour } = useContext(GlobalContext);
 
     const { selectedEmailId } = props;
 
@@ -51,7 +52,9 @@ const Content = props => {
                         <div className={styles.body}>
 
                             <div className={styles.profile_icon_container}>
-                                <div className={styles.profile_icon}>
+                                <div 
+                                    className={styles.profile_icon}
+                                    style={{backgroundColor: profileIconColour || 'gray'}}>
                                     <span className={styles.text}>{selectedEmail.author.slice(0, 2).toUpperCase()}</span>
                                 </div>
                             </div>
