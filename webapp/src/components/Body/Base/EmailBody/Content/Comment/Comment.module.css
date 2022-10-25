@@ -1,11 +1,27 @@
 .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-    margin: 0 0 0.75em 0;
-    padding: 0 0 0 0.5em;
+    margin-bottom: 1em;
+    padding: 0 0 0 0.75em;
 
-    border-left: 2px solid #424242;
+    border-left: 2px solid #7a7a7a;
 }
+.main.topmost{
+    margin-bottom: 1.5em;
+}
+
+.main .author{
+    text-align: left;
+
+    font-size: 12px;
+}
+
 .main .body_text{
     text-align: left;
     font-size: 14px;
+}
+.main .body_text div > p{
+    margin: 8px 0 12px 0 !important;
 }

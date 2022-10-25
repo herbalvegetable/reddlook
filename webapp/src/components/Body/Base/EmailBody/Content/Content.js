@@ -97,7 +97,7 @@ const Content = props => {
 
                                 <div className={styles.second_row}>
                                     <div className={styles.likes}>
-                                        Cc: Yam Lao Tay /CSF, Calvin Lee /CSF <span className={styles.score}>+{selectedEmail.score} others</span>
+                                        Cc: Yam Lao Tay /CSF; Calvin Lee /CSF; <span className={styles.score}>+{selectedEmail.score} others</span>
                                     </div>
                                     <div className={styles.time}>
                                         {convertSecondsToDate(selectedEmail.time)}
@@ -114,11 +114,12 @@ const Content = props => {
                                         return <Comment 
                                             key={i.toString()}
                                             id={comment.id}
-                                            author={comment.author.name}
+                                            author={comment.author}
                                             body={comment.body_html}
                                             score={comment.score}
                                             time={comment.created_utc}
                                             replies={comment.replies}
+                                            topmost
                                             />
                                     })
                                 }
