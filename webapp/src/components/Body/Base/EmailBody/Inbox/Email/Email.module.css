@@ -4,7 +4,7 @@
 
     width: inherit;
     height: 100%;
-    min-height: 80px;
+    height: 80px;
 
     border-top: 1px solid #f5f5f5;
 
@@ -70,6 +70,7 @@
     justify-content: space-between;
 
     width: 240px;
+    min-height: 19px;
 }
 .main .content .top_row .author{
     max-width: 240px;

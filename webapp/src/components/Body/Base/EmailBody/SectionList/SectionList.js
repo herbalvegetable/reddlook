@@ -75,6 +75,11 @@ const SectionList = props => {
                 subreddit: 'all',
             },
             {
+                title: 'news',
+                imgName: '',
+                subreddit: 'news',
+            },
+            {
                 title: 'bestofredditorupdates',
                 imgName: '',
                 subreddit: 'bestofredditorupdates',
