@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { Image } from 'react-bootstrap';
 
 import styles from './Inbox.module.css';
@@ -14,6 +14,8 @@ const Inbox = props => {
 
     const [emails, setEmails] = useState([]);
 
+    const emailListEl = useRef(null);
+
     useEffect(() => {
         if(subreddit){
             fetch(`http://localhost:5000/${subreddit}/hot`)
@@ -21,8 +23,12 @@ const Inbox = props => {
                     .then(data => {
                         console.log(data);
                         setEmails(data);
-
                         setSelectedEmailIndex(0);
+
+                        emailListEl?.current?.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                        });
                     })
                     .catch(err => console.log(err)))
                 .catch(err => console.log(err));
@@ -78,7 +84,7 @@ const Inbox = props => {
                 </div>
             </div>
 
-            <div className={styles.email_list}>
+            <div className={styles.email_list} ref={emailListEl}>
             {
                 emails.map((email, i) => {
                     return <Email 

@@ -70,6 +70,11 @@ const SectionList = props => {
 
             // Example Subreddits
             {
+                title: 'all',
+                imgName: '',
+                subreddit: 'all',
+            },
+            {
                 title: 'bestofredditorupdates',
                 imgName: '',
                 subreddit: 'bestofredditorupdates',
@@ -89,6 +94,66 @@ const SectionList = props => {
                 imgName: '',
                 subreddit: 'unresolvedmysteries',
             },
+            {
+                title: 'todayilearned',
+                imgName: '',
+                subreddit: 'todayilearned',
+            },
+            {
+                title: 'askreddit',
+                imgName: '',
+                subreddit: 'askreddit',
+            },
+            {
+                title: 'askscience',
+                imgName: '',
+                subreddit: 'askscience',
+            },
+            {
+                title: 'dataisbeautiful',
+                imgName: '',
+                subreddit: 'dataisbeautiful',
+            },
+            {
+                title: 'youshouldknow',
+                imgName: '',
+                subreddit: 'youshouldknow',
+            },
+            {
+                title: 'memes',
+                imgName: '',
+                subreddit: 'memes',
+            },
+            {
+                title: 'lifeprotips',
+                imgName: '',
+                subreddit: 'lifeprotips',
+            },
+            {
+                title: 'thathappened',
+                imgName: '',
+                subreddit: 'thathappened',
+            },
+            {
+                title: 'letsnotmeet',
+                imgName: '',
+                subreddit: 'letsnotmeet',
+            },
+            {
+                title: 'writingprompts',
+                imgName: '',
+                subreddit: 'writingprompts',
+            },
+            {
+                title: 'astrophotography',
+                imgName: '',
+                subreddit: 'astrophotography',
+            },
+            {
+                title: 'offmychest',
+                imgName: '',
+                subreddit: 'offmychest',
+            },
         ],
         options: [
             'Create new folder',
@@ -105,21 +170,21 @@ const SectionList = props => {
 
     return (
         <div className={styles.main}>
-            <SectionDropdown 
+            <SectionDropdown
                 title='Favourites'
                 sections={favourites.sections}
                 options={favourites.options}
-                expanded/>
-            <SectionDropdown 
+                expanded />
+            <SectionDropdown
                 title='Folders'
                 sections={folders.sections}
                 options={folders.options}
-                expanded/>
-            <SectionDropdown 
+                expanded />
+            <SectionDropdown
                 title='Groups'
                 sections={groups.sections}
                 options={groups.options}
-                expanded/>
+                expanded />
         </div>
     )
 }

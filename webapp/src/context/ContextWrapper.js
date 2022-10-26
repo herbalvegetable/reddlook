@@ -3,7 +3,7 @@
     import GlobalContext from "./GlobalContext";
 
     export default function ContextWrapper(props){
-        const [subreddit, setSubreddit] = useState('sgexams');
+        const [subreddit, setSubreddit] = useState('all');
         const [profileIconColour, setProfileIconColour] = useState('rgb(0,0,0)');
         return (
             <GlobalContext.Provider value={{
