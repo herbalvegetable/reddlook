@@ -33,12 +33,12 @@ const Content = props => {
                         setComments(data.comments);
                         setImgList(data.imgList);
 
-                        console.log(bodyEl.current);
+                        // console.log(bodyEl.current);
                         bodyEl?.current?.scrollTo({
                             top: 0,
                             // behavior: 'smooth',
                         });
-                        console.log(bodyEl.current.scrollY);
+                        // console.log(bodyEl.current.scrollY);
                     })
                     .catch(err => console.log(err))
                 )
@@ -169,7 +169,8 @@ const Content = props => {
 
                                     null
                                 }
-
+                                
+                                <span className={styles.comment_num}>{selectedEmail.commentsNum} replies</span>
                                 <div className={styles.comment_list}>
                                 {
                                     comments.map((comment, i) => {
@@ -181,6 +182,7 @@ const Content = props => {
                                             score={comment.score}
                                             time={comment.created_utc}
                                             replies={comment.replies}
+                                            op={selectedEmail.author}
                                             topmost
                                             />
                                     })

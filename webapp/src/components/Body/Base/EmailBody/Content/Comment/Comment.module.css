@@ -21,6 +21,9 @@
     font-size: 12px;
     color: rgb(125, 125, 125);
 }
+.main .author.op{
+    text-decoration: underline;
+}
 
 .main .body_text{
     text-align: left;

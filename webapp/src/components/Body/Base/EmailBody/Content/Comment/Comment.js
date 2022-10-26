@@ -6,11 +6,13 @@ import styles from './Comment.module.css';
 
 const Comment = props => {
 
-    const { id, author, body, score, time, replies, topmost, bottommost } = props;
+    const { id, author, body, score, time, replies, topmost, bottommost, op } = props;
+
+    // console.log(author, op, author == op);
 
     return (
         <div className={`${styles.main} ${topmost ? styles.topmost : ''} ${bottommost ? styles.bottommost : ''}`}>
-            <span className={styles.author}>{author}</span>
+            <span className={`${styles.author} ${author == op ? styles.op : ''}`}>{author} ({score})</span>
             <div className={styles.body_text}>{parse(body)}</div>
             {
                 replies.length > 0 && replies.map((comment, i) => {
@@ -23,6 +25,7 @@ const Comment = props => {
                         time={comment.created_utc}
                         replies={comment.replies}
                         bottommost={i == replies.length-1}
+                        op={op}
                         />
                 })
             }

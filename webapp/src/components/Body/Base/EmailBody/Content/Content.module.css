@@ -72,7 +72,7 @@
     border: 1px solid #424242;
 
     padding: 0 12px 0.75em 12px;
-    margin-bottom: 8px;
+    margin-bottom: 4em;
 
     background-color: #fff;
 
@@ -217,7 +217,17 @@
     margin: 12px 4px 1.5em 0;
 }
 .main .body_container .body .url_text .hyperlink{
+    text-align: left;
     font-size: 12px;
+}
+
+.main .comment_num{
+    display: flex;
+    align-self: flex-start;
+
+    font-size: 12px;
+    color: #7d7d7d;
+    margin-bottom: 0.5em;
 }
 
 .main .bottom_actions{

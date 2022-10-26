@@ -90,6 +90,11 @@ const SectionList = props => {
                 subreddit: 'sgexams',
             },
             {
+                title: 'singapore',
+                imgName: '',
+                subreddit: 'singapore',
+            },
+            {
                 title: 'relationship_advice',
                 imgName: '',
                 subreddit: 'relationship_advice',
@@ -113,6 +118,11 @@ const SectionList = props => {
                 title: 'askscience',
                 imgName: '',
                 subreddit: 'askscience',
+            },
+            {
+                title: 'asksingapore',
+                imgName: '',
+                subreddit: 'asksingapore',
             },
             {
                 title: 'dataisbeautiful',
@@ -158,6 +168,16 @@ const SectionList = props => {
                 title: 'offmychest',
                 imgName: '',
                 subreddit: 'offmychest',
+            },
+            {
+                title: 'iama',
+                imgName: '',
+                subreddit: 'iama',
+            },
+            {
+                title: 'technology',
+                imgName: '',
+                subreddit: 'technology',
             },
         ],
         options: [
