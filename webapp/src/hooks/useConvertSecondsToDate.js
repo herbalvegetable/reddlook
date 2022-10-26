@@ -10,7 +10,14 @@ export const convertSecondsToDate = s => {
 export const convertSecondsToShortDate = s => {
     const dateObj = new Date(s*1000);
     const d = dayjs(dateObj);
-    const dateStr = d.format('ddd DD/MM');
+    
+    if(d.format('DD/MM/YYYY') == dayjs().format('DD/MM/YYYY')){
+        return d.format('HH:mm');
+    }
 
-    return dateStr;
+    if(d.isAfter(dayjs().subtract(1, 'week'))){
+        return d.format('ddd HH:mm');
+    }
+    
+    return d.format('ddd DD/MM');
 }
