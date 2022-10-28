@@ -160,6 +160,11 @@ const SectionList = props => {
                 subreddit: 'writingprompts',
             },
             {
+                title: 'nosleep',
+                imgName: '',
+                subreddit: 'nosleep',
+            },
+            {
                 title: 'astrophotography',
                 imgName: '',
                 subreddit: 'astrophotography',

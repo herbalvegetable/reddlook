@@ -56,6 +56,7 @@ const getPost = async postId => {
             score: rawPost.score,
             commentsNum: rawPost.num_comments,
             comments: rawPost.comments,
+            subreddit: rawPost.subreddit.display_name,
 
             url: rawPost.url,
             imgUrl: rawPost.preview?.images[0]?.source?.url || null,
