@@ -30,6 +30,9 @@
 
     margin-right: 0.75em;
 }
+.main .header .title .loading{
+    color: gray;
+}
 .main .header .zoom_options{
     display: flex;
     flex-direction: row;

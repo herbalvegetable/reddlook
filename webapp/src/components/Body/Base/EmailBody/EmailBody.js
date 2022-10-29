@@ -11,6 +11,8 @@ const EmailBody = props => {
     const [selectedEmailIndex, setSelectedEmailIndex] = useState(null);
     const [selectedEmailId, setSelectedEmailId] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+
     const controller = new AbortController();
 
     useEffect(() => {
@@ -29,13 +31,14 @@ const EmailBody = props => {
                 selectedEmailIndex={selectedEmailIndex}
                 setSelectedEmailIndex={setSelectedEmailIndex}
                 setSelectedEmailId={setSelectedEmailId}
-                controller={controller}
-                abortFetch={abortFetch}/>
+                abortFetch={abortFetch}
+                setLoading={setLoading}/>
             <Content
                 selectedEmailIndex={selectedEmailIndex}
                 selectedEmailId={selectedEmailId}
                 controller={controller}
-                abortFetch={abortFetch}/>
+                loading={loading}
+                setLoading={setLoading}/>
         </div>
     )
 }

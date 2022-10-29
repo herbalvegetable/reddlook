@@ -10,7 +10,7 @@ const Inbox = props => {
 
     const { subreddit, setSubreddit } = useContext(GlobalContext);
 
-    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, controller, abortFetch } = props;
+    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, abortFetch, setLoading } = props;
 
     const [cachedEmails, setCachedEmails] = useState({});
 
@@ -97,7 +97,8 @@ const Inbox = props => {
                         setSelectedEmailIndex={setSelectedEmailIndex}
                         markRead={markRead}
                         markUnread={markUnread}
-                        abortFetch={abortFetch}/>
+                        abortFetch={abortFetch}
+                        setLoading={setLoading}/>
                 })
             }
             </div>

@@ -10,7 +10,7 @@ const Email = props => {
 
     const { profileIconColour: profileIconColourCtx, setProfileIconColour: setProfileIconColourCtx } = useContext(GlobalContext);
 
-    const { index, author, title, body, score, commentsNum, time, unread, profileIconColour, selectedEmailIndex, setSelectedEmailIndex, markRead, markUnread, abortFetch } = props;
+    const { index, author, title, body, score, commentsNum, time, unread, profileIconColour, selectedEmailIndex, setSelectedEmailIndex, markRead, markUnread, abortFetch, setLoading } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
@@ -33,6 +33,7 @@ const Email = props => {
                 abortFetch();
                 setSelectedEmailIndex(index);
                 markRead(index);
+                setLoading(true);
             }}>
             <div className={`${styles.profile_icon_container} ${unread ? styles.unread : ''}`}>
             {

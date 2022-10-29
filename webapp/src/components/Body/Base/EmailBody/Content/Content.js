@@ -14,7 +14,7 @@ const Content = props => {
 
     const { subreddit, profileIconColour } = useContext(GlobalContext);
 
-    const { selectedEmailId, controller, abortFetch } = props;
+    const { selectedEmailId, controller, loading, setLoading } = props;
     const { signal } = controller;
 
     const bodyEl = useRef(null);
@@ -34,6 +34,8 @@ const Content = props => {
                             top: 0,
                             // behavior: 'smooth',
                         });
+
+                        setLoading(false);
                     })
                     .catch(err => console.log(err))
                 )
@@ -61,7 +63,10 @@ const Content = props => {
                 Object.keys(selectedEmail).length > 0 ?
                 <>
                     <div className={styles.header}>
-                        <span className={styles.title}>Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`0000${Math.floor(Math.random() * 10000)}`.slice(-5)}</span>
+                        <span className={styles.title}>
+                            Comments {selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`0000${Math.floor(Math.random() * 10000)}`.slice(-5)}
+                            {loading && <span className={styles.loading}>  ...Loading</span>}
+                        </span>
                         <div className={styles.zoom_options}>
                             <Image 
                                 src={'./media/content/zoom_in.png'}
