@@ -26,7 +26,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId && subreddit){
-            fetch(`http://localhost:5000/${subreddit}/post/${selectedEmailId}`)
+            fetch(`http://192.168.0.98:5000/${subreddit}/post/${selectedEmailId}`)
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);

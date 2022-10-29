@@ -18,7 +18,7 @@ const Inbox = props => {
 
     useEffect(() => {
         if(subreddit){
-            fetch(`http://localhost:5000/${subreddit}/hot`)
+            fetch(`http://192.168.0.98:5000/${subreddit}/hot`)
                 .then(res => res.json()
                     .then(data => {
                         console.log(data);
