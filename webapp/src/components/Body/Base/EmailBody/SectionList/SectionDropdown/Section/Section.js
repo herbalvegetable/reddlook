@@ -9,7 +9,7 @@ const Section = props => {
 
     const { subreddit, setSubreddit } = useContext(GlobalContext);
 
-    const { subreddit: subreddit_name, title, imgName, unreadNum, highlighted } = props;
+    const { subreddit: subreddit_name, title, imgName, unreadNum, focused, numHighlighted } = props;
 
     const handleClick = e => {
         setSubreddit(subreddit_name);
@@ -17,7 +17,7 @@ const Section = props => {
 
     return (
         <div 
-            className={styles.main} 
+            className={`${styles.main} ${focused ? styles.focused : ''}`} 
             onClick={handleClick}>
             <div className={styles.img_container}>
                 <Image 
@@ -25,8 +25,8 @@ const Section = props => {
                     className={styles.img}/>
             </div>
             <div className={styles.text_container}>
-                <span className={styles.title}>{title}</span>
-                { unreadNum && <span className={`${styles.unread_num} ${highlighted ? styles.highlighted : ''}`}>{unreadNum}</span> }
+                <span className={`${styles.title}`}>{title}</span>
+                { unreadNum && <span className={`${styles.unread_num} ${numHighlighted ? styles.highlighted : ''}`}>{unreadNum}</span> }
             </div>
         </div>
     )

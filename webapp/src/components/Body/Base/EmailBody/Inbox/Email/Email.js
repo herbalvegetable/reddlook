@@ -10,7 +10,7 @@ const Email = props => {
 
     const { profileIconColour: profileIconColourCtx, setProfileIconColour: setProfileIconColourCtx } = useContext(GlobalContext);
 
-    const { index, author, title, body, score, commentsNum, time, unread, profileIconColour, selectedEmailIndex, setSelectedEmailIndex, markRead, markUnread } = props;
+    const { index, author, title, body, score, commentsNum, time, unread, profileIconColour, selectedEmailIndex, setSelectedEmailIndex, markRead, markUnread, abortFetch } = props;
 
     const [isHover, setIsHover] = useState(false);
     const [isHoverDelete, setIsHoverDelete] = useState(false);
@@ -30,6 +30,7 @@ const Email = props => {
             onMouseOver={() => setIsHover(true)}
             onMouseOut={() => setIsHover(false)}
             onClick={() => {
+                abortFetch();
                 setSelectedEmailIndex(index);
                 markRead(index);
             }}>
@@ -55,6 +56,7 @@ const Email = props => {
                             <div 
                                 className={styles.action}
                                 onClick={e => {
+                                    e.preventDefault();
                                     e.stopPropagation();
                                     markUnread(index);
                                 }}>

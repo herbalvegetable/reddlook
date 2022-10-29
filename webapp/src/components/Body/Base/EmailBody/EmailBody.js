@@ -11,9 +11,16 @@ const EmailBody = props => {
     const [selectedEmailIndex, setSelectedEmailIndex] = useState(null);
     const [selectedEmailId, setSelectedEmailId] = useState(null);
 
+    const controller = new AbortController();
+
     useEffect(() => {
         console.log(selectedEmailId);
     }, [selectedEmailId]);
+
+    const abortFetch = () => {
+        console.log('Aborting fetch...');
+        controller.abort();
+    }
 
     return (
         <div className={styles.main}>
@@ -21,10 +28,14 @@ const EmailBody = props => {
             <Inbox  
                 selectedEmailIndex={selectedEmailIndex}
                 setSelectedEmailIndex={setSelectedEmailIndex}
-                setSelectedEmailId={setSelectedEmailId}/>
+                setSelectedEmailId={setSelectedEmailId}
+                controller={controller}
+                abortFetch={abortFetch}/>
             <Content
                 selectedEmailIndex={selectedEmailIndex}
-                selectedEmailId={selectedEmailId}/>
+                selectedEmailId={selectedEmailId}
+                controller={controller}
+                abortFetch={abortFetch}/>
         </div>
     )
 }

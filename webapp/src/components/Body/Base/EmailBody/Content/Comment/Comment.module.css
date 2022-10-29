@@ -32,3 +32,10 @@
 .main .body_text div > p{
     margin: 8px 0 12px 0 !important;
 }
+.main .body_text div img{
+    opacity: 0.1;
+    transition: 0.25s;
+}
+.main .body_text div img:hover{
+    opacity: 1;
+}

@@ -21,7 +21,7 @@ const getHotPostsBasic = async subredditName => {
             return {
                 id: post.id,
                 author: post.author.name,
-                title: post.title,
+                title: post.title.slice(0, 50),
                 body: post.selftext.slice(0, 50),
                 time: post.created_utc,
                 score: post.score,
@@ -55,7 +55,7 @@ const getPost = async postId => {
             time: rawPost.created_utc,
             score: rawPost.score,
             commentsNum: rawPost.num_comments,
-            comments: rawPost.comments,
+            // comments: rawPost.comments,
             subreddit: rawPost.subreddit.display_name,
 
             url: rawPost.url,
@@ -82,7 +82,18 @@ const getPost = async postId => {
     }
 }
 
+const getPostComments = async postId => {
+    try{
+        const rawPost = await r.getSubmission(postId).fetch();
+        return rawPost.comments;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 module.exports = {
     getHotPostsBasic,
     getPost,
+    getPostComments,
 }

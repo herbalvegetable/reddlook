@@ -14,38 +14,45 @@ const Content = props => {
 
     const { subreddit, profileIconColour } = useContext(GlobalContext);
 
-    const { selectedEmailId } = props;
+    const { selectedEmailId, controller, abortFetch } = props;
+    const { signal } = controller;
 
     const bodyEl = useRef(null);
-
-    // const { author, title, body, unread } = selectedEmail;
 
     const [selectedEmail, setSelectedEmail] = useState({});
     const [comments, setComments] = useState([]);
     const [imgList, setImgList] = useState([]);
 
     useEffect(() => {
-        if(selectedEmailId && subreddit){
-            fetch(`http://192.168.0.98:5000/${subreddit}/post/${selectedEmailId}`)
+        if(selectedEmailId){
+            fetch(`http://localhost:5000/${subreddit}/post/${selectedEmailId}`, {signal})
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);
-                        setComments(data.comments);
                         setImgList(data.imgList);
-
-                        // console.log(bodyEl.current);
                         bodyEl?.current?.scrollTo({
                             top: 0,
                             // behavior: 'smooth',
                         });
-                        // console.log(bodyEl.current.scrollY);
-                        console.log(selectedEmail?.subreddit, subreddit, selectedEmail?.subreddit == subreddit);
                     })
                     .catch(err => console.log(err))
                 )
                 .catch(err => console.log(err));
         }
-    }, [selectedEmailId, subreddit]);
+    }, [selectedEmailId]);
+
+    useEffect(() => {
+        if(selectedEmailId){
+            fetch(`http://localhost:5000/${subreddit}/comments/${selectedEmailId}`, {signal})
+                .then(res => res.json()
+                    .then(data => {
+                        setComments(data);
+                    })
+                    .catch(err => console.log(err))
+                )
+                .catch(err => console.log(err));
+        }
+    }, [selectedEmailId]);
 
     return (
         

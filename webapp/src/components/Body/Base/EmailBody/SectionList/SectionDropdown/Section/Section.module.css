@@ -11,6 +11,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.main.focused{
+    background-color: #CFE4FA;
+    font-weight: 600;
+}
 .main:hover{
     background-color: #F0F0F0;
 }

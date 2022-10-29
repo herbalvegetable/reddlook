@@ -10,7 +10,9 @@ const Inbox = props => {
 
     const { subreddit, setSubreddit } = useContext(GlobalContext);
 
-    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId } = props;
+    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, controller, abortFetch } = props;
+
+    const [cachedEmails, setCachedEmails] = useState({});
 
     const [emails, setEmails] = useState([]);
 
@@ -18,7 +20,7 @@ const Inbox = props => {
 
     useEffect(() => {
         if(subreddit){
-            fetch(`http://192.168.0.98:5000/${subreddit}/hot`)
+            fetch(`http://localhost:5000/${subreddit}/hot`)
                 .then(res => res.json()
                     .then(data => {
                         console.log(data);
@@ -94,7 +96,8 @@ const Inbox = props => {
                         selectedEmailIndex={selectedEmailIndex}
                         setSelectedEmailIndex={setSelectedEmailIndex}
                         markRead={markRead}
-                        markUnread={markUnread}/>
+                        markUnread={markUnread}
+                        abortFetch={abortFetch}/>
                 })
             }
             </div>
