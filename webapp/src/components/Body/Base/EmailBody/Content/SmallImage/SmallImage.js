@@ -5,7 +5,13 @@ import styles from './SmallImage.module.css';
 
 const SmallImage = props => {
 
-    const { imgSrc, caption } = props;
+    const { imgSrc, caption, setExpandedImgSrc } = props;
+
+    const handleImageClick = e => {
+        e.preventDefault();
+
+        setExpandedImgSrc(imgSrc);
+    }
 
     return (
         <div 
@@ -13,7 +19,8 @@ const SmallImage = props => {
             <Image
                 src={imgSrc}
                 title={caption || ''}
-                className={styles.img}/>
+                className={styles.img}
+                onClick={handleImageClick}/>
         </div>
     )
 }

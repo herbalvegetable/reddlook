@@ -22,6 +22,7 @@ const Content = props => {
     const [selectedEmail, setSelectedEmail] = useState({});
     const [comments, setComments] = useState([]);
     const [imgList, setImgList] = useState([]);
+    const [expandedImgSrc, setExpandedImgSrc] = useState(null);
 
     useEffect(() => {
         if(selectedEmailId){
@@ -64,7 +65,7 @@ const Content = props => {
                 <>
                     <div className={styles.header}>
                         <span className={styles.title}>
-                            Comments {selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`0000${Math.floor(Math.random() * 10000)}`.slice(-5)}
+                            Comments {selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`000${Math.floor(Math.random() * 10000)}`.slice(-4)}
                             {loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
                         <div className={styles.zoom_options}>
@@ -142,6 +143,16 @@ const Content = props => {
                                 }
 
                                 {
+                                    expandedImgSrc &&
+                                    <div 
+                                        className={styles.expanded_img_container}
+                                        onClick={e => setExpandedImgSrc(null)}>
+                                        <Image 
+                                            src={expandedImgSrc}
+                                            className={styles.img}/>
+                                    </div>
+                                }
+                                {
 
                                     (imgList && imgList.length > 0) ?
 
@@ -150,7 +161,8 @@ const Content = props => {
                                         imgList.map((imgData, i) => {
                                             return <SmallImage 
                                                 key={i.toString()}
-                                                {...imgData}/>
+                                                {...imgData}
+                                                setExpandedImgSrc={setExpandedImgSrc}/>
                                         })
                                     }
                                     </div>
@@ -161,7 +173,8 @@ const Content = props => {
 
                                     <div className={styles.img_single}>
                                         <SmallImage 
-                                            imgSrc={selectedEmail.imgUrl}/>
+                                            imgSrc={selectedEmail.imgUrl}
+                                            setExpandedImgSrc={setExpandedImgSrc}/>
                                     </div>
 
                                     : null

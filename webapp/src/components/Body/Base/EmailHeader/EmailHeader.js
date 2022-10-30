@@ -14,12 +14,17 @@ const EmailHeader = props => {
     return (
         <div className={styles.header}>
             <div className={styles.tabs}>
-                <div className={styles.tab}>
-                    <span className={styles.text}>Home</span>
-                </div>
-                <div className={styles.tab}>
-                    <span className={styles.text}>View</span>
-                </div>
+            {
+                ['Home', 'View'].map((text, i) => {
+                    return <div 
+                        key={i.toString()}
+                        className={styles.tab_container}>
+                        <div className={styles.tab}>
+                            <span className={styles.text}>{text}</span>
+                        </div>
+                    </div>
+                })
+            }
             </div>
             <div className={styles.ribbon_container}>
                 <div className={styles.ribbon}>

@@ -7,6 +7,8 @@
     opacity: 0.3;
 
     transition: 0.2s;
+
+    user-select: none;
 }
 .main:hover{
     opacity: 1;
@@ -15,4 +17,7 @@
 .main .img{
     max-width: 7.5em;
     border-radius: 3px;
+}
+.main .img:hover{
+    cursor: pointer;
 }

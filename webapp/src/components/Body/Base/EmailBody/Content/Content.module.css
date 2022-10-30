@@ -197,6 +197,24 @@
     word-break: break-word;
 }
 
+.main .body_container .body .expanded_img_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    padding: 1em 0;
+}
+.main .body_container .body .expanded_img_container:hover{
+    cursor: pointer;
+}
+.main .body_container .body .expanded_img_container .img{
+    max-width: calc(100vw - 750px);
+    max-height: calc(100vh - 300px);
+
+    border-radius: 4px;
+}
+
 .main .body_container .body .img_list{
     display: flex;
     justify-content: flex-start;
