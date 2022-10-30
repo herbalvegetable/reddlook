@@ -36,6 +36,7 @@ const Content = props => {
                             // behavior: 'smooth',
                         });
 
+                        setExpandedImgSrc(null);
                         setLoading(false);
                     })
                     .catch(err => console.log(err))
@@ -65,7 +66,7 @@ const Content = props => {
                 <>
                     <div className={styles.header}>
                         <span className={styles.title}>
-                            Comments {selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`000${Math.floor(Math.random() * 10000)}`.slice(-4)}
+                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`000${Math.floor(Math.random() * 10000)}`.slice(-4)}
                             {loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
                         <div className={styles.zoom_options}>

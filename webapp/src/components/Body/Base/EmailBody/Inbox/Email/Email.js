@@ -33,7 +33,7 @@ const Email = props => {
                 abortFetch();
                 setSelectedEmailIndex(index);
                 markRead(index);
-                setLoading(true);
+                setLoading(!selected);
             }}>
             <div className={`${styles.profile_icon_container} ${unread ? styles.unread : ''}`}>
             {
