@@ -27,6 +27,11 @@ const Option = props => {
                         if(isHoveringSaveBtn) return;
                         setFocused(false)
                     }}
+                    onKeyDown={e => {
+                        if(e.key == 'Escape'){
+                            setFocused(false);
+                        }
+                    }}
                     autoFocus/>
                 <Button 
                     className={styles.save_btn}
