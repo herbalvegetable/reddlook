@@ -3,7 +3,7 @@
     background-color: inherit;
     padding-top: 4px;
 
-    overflow-y: scroll;
+    /* overflow-y: auto; */
     overflow-x: hidden;
 
     user-select: none;

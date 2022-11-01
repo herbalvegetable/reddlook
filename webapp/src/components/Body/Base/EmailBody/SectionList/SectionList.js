@@ -199,8 +199,16 @@ const SectionList = props => {
         ],
     });
 
+    const [isHover, setIsHover] = useState(false);
+
     return (
-        <div className={styles.main}>
+        <div 
+            className={styles.main}
+            onMouseEnter={e => setIsHover(true)}
+            onMouseLeave={e => setIsHover(false)}
+            style={{
+                overflowY: isHover ? 'auto' : 'hidden',
+            }}>
             <SectionDropdown
                 title='Favourites'
                 sections={favourites.sections}
