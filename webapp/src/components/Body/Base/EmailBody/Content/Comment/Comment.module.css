@@ -6,7 +6,8 @@
     margin-bottom: 1em;
     padding: 0 0 0 0.75em;
 
-    border-left: 2px solid #7a7a7a;
+    /* border-left: 2px solid #7a7a7a; */
+    border-left: 2px solid #acacac;
 }
 .main.topmost{
     margin-bottom: 1.5em;
@@ -30,6 +31,11 @@
     font-size: 14px;
 }
 .main .body_text div > p{
+    max-width: calc(100vw - 728px - (var(--depth) * (0.75em + 2px)));
+
+    overflow-wrap: normal;
+    word-wrap: normal;
+
     margin: 8px 0 12px 0 !important;
 }
 .main .body_text div img{

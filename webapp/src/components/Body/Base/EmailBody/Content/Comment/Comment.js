@@ -6,12 +6,16 @@ import styles from './Comment.module.css';
 
 const Comment = props => {
 
-    const { id, author, body, score, time, replies, topmost, bottommost, op } = props;
+    const { id, author, body, score, time, replies, topmost, bottommost, op, depth } = props;
 
     // console.log(author, op, author == op);
 
     return (
-        <div className={`${styles.main} ${topmost ? styles.topmost : ''} ${bottommost ? styles.bottommost : ''}`}>
+        <div 
+            className={`${styles.main} ${topmost ? styles.topmost : ''} ${bottommost ? styles.bottommost : ''}`}
+            style={{
+                "--depth": depth,
+            }}>
             <span className={`${styles.author} ${author == op ? styles.op : ''}`}>{author} ({score})</span>
             <div className={styles.body_text}>{parse(body)}</div>
             {
@@ -26,6 +30,7 @@ const Comment = props => {
                         replies={comment.replies}
                         bottommost={i == replies.length-1}
                         op={op}
+                        depth={depth+1}
                         />
                 })
             }

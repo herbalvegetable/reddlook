@@ -210,6 +210,7 @@ const Content = props => {
                                             time={comment.created_utc}
                                             replies={comment.replies}
                                             op={selectedEmail.author}
+                                            depth={1}
                                             topmost
                                             />
                                     })

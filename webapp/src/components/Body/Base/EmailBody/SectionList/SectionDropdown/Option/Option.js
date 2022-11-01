@@ -11,6 +11,13 @@ const Option = props => {
     const [inputVal, setInputVal] = useState('');
     const [isHoveringSaveBtn, setIsHoveringSaveBtn] = useState(false);
 
+    const handleAddSection = () => {
+        if(inputVal == '') return;
+        addSection(inputVal);
+        setFocused(false);
+        setInputVal('');
+    }
+
     return (
         <>
         {
@@ -28,20 +35,20 @@ const Option = props => {
                         setFocused(false)
                     }}
                     onKeyDown={e => {
-                        if(e.key == 'Escape'){
-                            setFocused(false);
+                        switch(e.key){
+                            case 'Escape':
+                                setFocused(false);
+                            break;
+                            case 'Enter':
+                                handleAddSection();
+                            break;
                         }
                     }}
                     autoFocus/>
                 <Button 
                     className={styles.save_btn}
                     disabled={inputVal == ''}
-                    onClick={() => {
-                        if(inputVal == '') return;
-                        addSection(inputVal);
-                        setFocused(false);
-                        setInputVal('');
-                    }}
+                    onClick={() => handleAddSection()}
                     onMouseEnter={() => setIsHoveringSaveBtn(true)}
                     onMouseLeave={() => setIsHoveringSaveBtn(false)}>
                     Save
