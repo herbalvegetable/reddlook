@@ -89,7 +89,7 @@ const Content = props => {
                 <>
                     <div className={styles.header}>
                         <span className={styles.title}>
-                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{randSubjectNumber}
+                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} - RED:#{randSubjectNumber}
                             {loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
                         <div 
@@ -132,7 +132,7 @@ const Content = props => {
                             <div className={styles.content}>
 
                                 <div className={styles.first_row}>
-                                    <span className={styles.author}>{selectedEmail.author} {"<no-reply@reddlook.com>"}</span>
+                                    <span className={styles.author}>{selectedEmail.author} /RED - No Reply {"<no-reply@reddlook.com>"}</span>
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
                                             <Image 
@@ -164,7 +164,7 @@ const Content = props => {
 
                                 <div className={styles.second_row}>
                                     <div className={styles.likes}>
-                                        Cc: Yam Lao Tay /CSF; Calvin Lee /CSF; <span className={styles.score}>+{selectedEmail.score} others</span>
+                                        Cc: Yam Lao Tay /RED; Calvin Lee /RED; <span className={styles.score}>+{selectedEmail.score} others</span>
                                     </div>
                                     <div className={styles.time}>
                                         {convertSecondsToDate(selectedEmail.time)}
