@@ -6,6 +6,8 @@ import SectionDropdown from './SectionDropdown/SectionDropdown';
 
 const SectionList = props => {
 
+    const { abortInboxFetch, inboxLoading, setInboxLoading } = props;
+
     const [favourites, setFavourites] = useState({
         sections: [
             {
@@ -213,16 +215,25 @@ const SectionList = props => {
                 title='Favourites'
                 sections={favourites.sections}
                 options={favourites.options}
+                inboxLoading={inboxLoading}
+                setInboxLoading={setInboxLoading}
+                abortInboxFetch={abortInboxFetch}
                 expanded />
             <SectionDropdown
                 title='Folders'
                 sections={folders.sections}
                 options={folders.options}
+                inboxLoading={inboxLoading}
+                setInboxLoading={setInboxLoading}
+                abortInboxFetch={abortInboxFetch}
                 expanded />
             <SectionDropdown
                 title='Groups'
                 sections={groups.sections}
                 options={groups.options}
+                inboxLoading={inboxLoading}
+                setInboxLoading={setInboxLoading}
+                abortInboxFetch={abortInboxFetch}
                 expanded />
         </div>
     )

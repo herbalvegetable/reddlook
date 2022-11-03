@@ -49,7 +49,7 @@ const Content = props => {
                     })
                     .catch(err => console.log(err))
                 )
-                .catch(err => console.log(err));
+                .catch(err => console.log(`Error: ${err}`));
         }
     }, [selectedEmailId]);
 
@@ -74,7 +74,7 @@ const Content = props => {
         const commentInfoList = [...commentListRef.current.children].map((child, i) => {
                 return {pos: getCommentYPos(i) - 60, index: i};
         });
-        const closestCommentIndex = commentInfoList.filter(comment => comment.pos > bodyEl.current.scrollTop).sort((a, b) => a.pos - b.pos)[0].index;
+        const closestCommentIndex = commentInfoList.filter(comment => comment.pos > bodyEl.current.scrollTop).sort((a, b) => a.pos - b.pos)[0]?.index || 0;
         // console.log(closestCommentIndex);
         // console.log(bodyEl.current.scrollTop, commentInfoList[closestCommentIndex].pos);
 
@@ -89,21 +89,16 @@ const Content = props => {
                 <>
                     <div className={styles.header}>
                         <span className={styles.title}>
-                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} - RED:#{randSubjectNumber}
-                            {loading && <span className={styles.loading}>  ...Loading</span>}
+                            (REDForum) Comments: {selectedEmail.title} - RED:#{randSubjectNumber}{loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
                         <div 
                             className={styles.zoom_options}
                             onClick={e => {
-                                // console.log([...commentListRef.current.children].map(child => `${child.innerText.slice(0, 6)}: ${child.offsetTop}`));
                                 if(!commentListRef.current) return;
                                 bodyEl?.current?.scrollTo({
                                     top: getCommentYPos(currCommentIndex) - 50,
                                     behavior: 'smooth',
                                 });
-
-                                // let newIndex = currCommentIndex < comments.length-1 ? currCommentIndex + 1 : 0;
-                                // setCurrCommentIndex(newIndex);
                             }}>
                             <Image 
                                 src={'./media/content/zoom_in.png'}
@@ -132,7 +127,7 @@ const Content = props => {
                             <div className={styles.content}>
 
                                 <div className={styles.first_row}>
-                                    <span className={styles.author}>{selectedEmail.author} /RED - No Reply {"<no-reply@reddlook.com>"}</span>
+                                    <span className={styles.author}>{selectedEmail.author} /RED - No Reply {`<no-reply.${selectedEmail.subreddit}@reddlook.com>`}</span>
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
                                             <Image 

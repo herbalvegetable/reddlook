@@ -8,7 +8,7 @@ import Option from './Option/Option';
 
 const SectionDropdown = props => {
 
-    const { title, expanded, sections: sects, options: opts } = props;
+    const { title, expanded, sections: sects, options: opts, setInboxLoading, abortInboxFetch } = props;
 
     const [isExpanded, setIsExpanded] = useState(expanded);
     const [sections, setSections] = useState(sects || []);
@@ -39,7 +39,9 @@ const SectionDropdown = props => {
                         sections.map((section, i) => {
                             return <Section 
                                 key={i.toString()}
-                                {...section}/>
+                                {...section}
+                                setInboxLoading={setInboxLoading}
+                                abortInboxFetch={abortInboxFetch}/>
                         })
                     }
                     {

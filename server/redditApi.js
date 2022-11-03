@@ -11,7 +11,7 @@ const r = new snoowrap({
 
 const getHotPostsBasic = async subredditName => {
     try{
-        const posts = await r.getSubreddit(subredditName).getHot({limit: 85});
+        const posts = await r.getSubreddit(subredditName).getHot({limit: 175});
         // console.log(posts.map(post => {
         //     let p = {...post}
         //     delete p.comments;

@@ -10,20 +10,21 @@ const Inbox = props => {
 
     const { subreddit, setSubreddit } = useContext(GlobalContext);
 
-    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, abortFetch, setLoading } = props;
+    const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, abortFetch, setLoading, inboxLoading, setInboxLoading, inboxLoadingController } = props;
 
     const [cachedEmails, setCachedEmails] = useState({});
-
     const [emails, setEmails] = useState([]);
 
     const emailListEl = useRef(null);
 
+    const { signal } = inboxLoadingController;
+
     useEffect(() => {
         if(subreddit){
-            fetch(`http://localhost:5000/${subreddit}/hot`)
+            fetch(`http://localhost:5000/${subreddit}/hot`, {method: 'GET', signal: signal})
                 .then(res => res.json()
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         setEmails(data);
                         setSelectedEmailIndex(0);
 
@@ -31,6 +32,9 @@ const Inbox = props => {
                             top: 0,
                             behavior: 'smooth',
                         });
+
+                        setInboxLoading(false);
+                        
                     })
                     .catch(err => console.log(err)))
                 .catch(err => console.log(err));
@@ -73,7 +77,7 @@ const Inbox = props => {
                     <span className={styles.text}>Focused</span>
                 </div>
                 <div className={styles.section}>
-                    <span className={styles.text}>Other</span>
+                    <span className={styles.text}>{inboxLoading ? 'Loading...' : 'Other'}</span>
                 </div>
                 
                 <div className={styles.filter_container}>
