@@ -20,9 +20,15 @@ const Content = props => {
     const bodyEl = useRef(null);
 
     const [selectedEmail, setSelectedEmail] = useState({});
-    const [comments, setComments] = useState([]);
     const [imgList, setImgList] = useState([]);
     const [expandedImgSrc, setExpandedImgSrc] = useState(null);
+    const [randSubjectNumber, setRandSubjectNumber] = useState(`000${Math.floor(Math.random() * 10000)}`.slice(-4));
+    const mainContentRef = useRef(null);
+
+    const [comments, setComments] = useState([]);
+    const [currCommentIndex, setCurrCommentIndex] = useState(0);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const commentListRef = useRef(null);
 
     useEffect(() => {
         if(selectedEmailId){
@@ -38,6 +44,8 @@ const Content = props => {
 
                         setExpandedImgSrc(null);
                         setLoading(false);
+
+                        setCurrCommentIndex(0);
                     })
                     .catch(err => console.log(err))
                 )
@@ -58,6 +66,21 @@ const Content = props => {
         }
     }, [selectedEmailId]);
 
+    const getCommentYPos = index => {
+        return commentListRef.current.children[index]?.offsetTop - commentListRef.current.offsetTop/2 + mainContentRef.current.getBoundingClientRect().height/2;
+    }
+    const updateCurrCommentIndex = () => {
+        if(!commentListRef.current) return;
+        const commentInfoList = [...commentListRef.current.children].map((child, i) => {
+                return {pos: getCommentYPos(i) - 60, index: i};
+        });
+        const closestCommentIndex = commentInfoList.filter(comment => comment.pos > bodyEl.current.scrollTop).sort((a, b) => a.pos - b.pos)[0].index;
+        // console.log(closestCommentIndex);
+        // console.log(bodyEl.current.scrollTop, commentInfoList[closestCommentIndex].pos);
+
+        setCurrCommentIndex(closestCommentIndex);
+    }
+
     return (
         
         <div className={styles.main}>
@@ -66,10 +89,22 @@ const Content = props => {
                 <>
                     <div className={styles.header}>
                         <span className={styles.title}>
-                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{`000${Math.floor(Math.random() * 10000)}`.slice(-4)}
+                            Comments{selectedEmail.subreddit.toLowerCase() == subreddit.toLowerCase() || ` [r:${selectedEmail.subreddit.toLowerCase()}]` }: {selectedEmail.title} #{randSubjectNumber}
                             {loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
-                        <div className={styles.zoom_options}>
+                        <div 
+                            className={styles.zoom_options}
+                            onClick={e => {
+                                // console.log([...commentListRef.current.children].map(child => `${child.innerText.slice(0, 6)}: ${child.offsetTop}`));
+                                if(!commentListRef.current) return;
+                                bodyEl?.current?.scrollTo({
+                                    top: getCommentYPos(currCommentIndex) - 50,
+                                    behavior: 'smooth',
+                                });
+
+                                // let newIndex = currCommentIndex < comments.length-1 ? currCommentIndex + 1 : 0;
+                                // setCurrCommentIndex(newIndex);
+                            }}>
                             <Image 
                                 src={'./media/content/zoom_in.png'}
                                 className={styles.zoom_in_img}/>
@@ -78,7 +113,12 @@ const Content = props => {
                                 className={styles.dropdown_img}/>
                         </div>
                     </div>
-                    <div className={styles.body_container} ref={bodyEl}>
+                    <div 
+                        className={styles.body_container} 
+                        ref={bodyEl}
+                        onScroll={e => {
+                            updateCurrCommentIndex();
+                        }}>
                         <div className={styles.body}>
 
                             <div className={styles.profile_icon_container}>
@@ -130,7 +170,7 @@ const Content = props => {
                                         {convertSecondsToDate(selectedEmail.time)}
                                     </div>
                                 </div>
-
+                                <div className={styles.main_content} ref={mainContentRef}>
                                 {
                                     selectedEmail.body ?
 
@@ -196,9 +236,9 @@ const Content = props => {
 
                                     null
                                 }
-                                
+                                </div>
                                 <span className={styles.comment_num}>{selectedEmail.commentsNum} replies</span>
-                                <div className={styles.comment_list}>
+                                <div className={styles.comment_list} ref={commentListRef}>
                                 {
                                     comments.map((comment, i) => {
                                         return <Comment 

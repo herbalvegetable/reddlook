@@ -179,7 +179,7 @@
 }
 
 
-.main .body_container .body .body_text{
+.main .body_container .body .main_content .body_text{
     word-wrap: break-word;
     overflow-wrap: break-word;
 
@@ -189,7 +189,7 @@
 
     line-height: 1.6;
 }
-.main .body_container .body .body_text div > *{
+.main .body_container .body .main_content .body_text div > *{
     max-width: calc(100vw - 708px);
 
     word-wrap: break-word;
@@ -197,7 +197,7 @@
     word-break: break-word;
 }
 
-.main .body_container .body .expanded_img_container{
+.main .body_container .body .main_content .expanded_img_container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,17 +205,17 @@
 
     padding: 1em 0;
 }
-.main .body_container .body .expanded_img_container:hover{
+.main .body_container .body .main_content .expanded_img_container:hover{
     cursor: pointer;
 }
-.main .body_container .body .expanded_img_container .img{
+.main .body_container .body .main_content .expanded_img_container .img{
     max-width: calc(100vw - 750px);
     max-height: calc(100vh - 300px);
 
     border-radius: 4px;
 }
 
-.main .body_container .body .img_list{
+.main .body_container .body .main_content .img_list{
     display: flex;
     justify-content: flex-start;
 
@@ -224,20 +224,20 @@
     margin: 12px 4px 1.5em 0;
 }
 
-.main .body_container .body .img_single{
+.main .body_container .body .main_content .img_single{
     display: flex;
     justify-content: flex-start;
 
     margin: 12px 4px 1.5em 0;
 }
 
-.main .body_container .body .url_text{
+.main .body_container .body .main_content .url_text{
     display: flex;
     justify-content: flex-start;
 
     margin: 12px 4px 1.5em 0;
 }
-.main .body_container .body .url_text .hyperlink{
+.main .body_container .body .main_content .url_text .hyperlink{
     text-align: left;
     font-size: 12px;
 }
