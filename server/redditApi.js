@@ -74,6 +74,10 @@ const getPost = async postId => {
                 })
 
                 : [],
+
+            ...(rawPost.is_video && {
+                videoUrl: rawPost.media.reddit_video.fallback_url,
+            })
         }
         return post;
     }

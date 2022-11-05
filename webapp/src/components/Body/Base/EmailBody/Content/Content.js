@@ -9,6 +9,7 @@ import GlobalContext from '../../../../../context/GlobalContext';
 import { convertSecondsToDate } from '../../../../../hooks/useConvertSecondsToDate';
 import Comment from './Comment/Comment';
 import SmallImage from './SmallImage/SmallImage';
+import SmallVideo from './SmallVideo/SmallVideo';
 
 const Content = props => {
 
@@ -22,6 +23,7 @@ const Content = props => {
     const [selectedEmail, setSelectedEmail] = useState({});
     const [imgList, setImgList] = useState([]);
     const [expandedImgSrc, setExpandedImgSrc] = useState(null);
+    const [videoUrl, setVideoUrl] = useState(null);
     const [randSubjectNumber, setRandSubjectNumber] = useState(`000${Math.floor(Math.random() * 10000)}`.slice(-4));
     const mainContentRef = useRef(null);
 
@@ -43,6 +45,8 @@ const Content = props => {
                         });
 
                         setExpandedImgSrc(null);
+                        console.log(data.videoUrl);
+                        setVideoUrl(data.videoUrl);
                         setLoading(false);
 
                         setCurrCommentIndex(0);
@@ -52,6 +56,10 @@ const Content = props => {
                 .catch(err => console.log(`Error: ${err}`));
         }
     }, [selectedEmailId]);
+
+    useEffect(() => {
+        console.log(videoUrl);
+    }, [videoUrl]);
 
     useEffect(() => {
         if(selectedEmailId){
@@ -201,6 +209,17 @@ const Content = props => {
                                                 setExpandedImgSrc={setExpandedImgSrc}/>
                                         })
                                     }
+                                    </div>
+
+                                    :
+
+                                    selectedEmail.videoUrl ?
+                                    <div
+                                        // key={Math.floor(Math.random() * 100).toString()}
+                                        key={videoUrl}
+                                        className={styles.small_video_container}>
+                                        <SmallVideo 
+                                            videoUrl={videoUrl}/>
                                     </div>
 
                                     :

@@ -5,7 +5,7 @@ import styles from './Option.module.css';
 
 const Option = props => {
 
-    const { text, addSection } = props;
+    const { text, addSections } = props;
 
     const [focused, setFocused] = useState(false);
     const [inputVal, setInputVal] = useState('');
@@ -13,7 +13,8 @@ const Option = props => {
 
     const handleAddSection = () => {
         if(inputVal == '') return;
-        addSection(inputVal);
+        const subreddits = inputVal.trim().replace(/ /g, '').split(',');
+        addSections(subreddits);
         setFocused(false);
         setInputVal('');
     }

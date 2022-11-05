@@ -224,6 +224,13 @@
     margin: 12px 4px 1.5em 0;
 }
 
+.main .body_container .body .main_content .small_video_container{
+    display: flex;
+    justify-content: flex-start;
+
+    margin: 12px 4px 1.5em 0;
+}
+
 .main .body_container .body .main_content .img_single{
     display: flex;
     justify-content: flex-start;

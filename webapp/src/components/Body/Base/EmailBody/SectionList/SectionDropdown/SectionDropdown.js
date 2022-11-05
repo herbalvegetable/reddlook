@@ -8,18 +8,20 @@ import Option from './Option/Option';
 
 const SectionDropdown = props => {
 
-    const { title, expanded, sections: sects, options: opts, setInboxLoading, abortInboxFetch } = props;
+    const { title, expanded, sections: sects, options: opts, inboxLoading, setInboxLoading, abortInboxFetch } = props;
 
     const [isExpanded, setIsExpanded] = useState(expanded);
     const [sections, setSections] = useState(sects || []);
     const [options, setOptions] = useState(opts || []);
 
-    const addSection = sectionTitle => {
-        setSections([...sections, {
-            title: sectionTitle,
-            imgName: '',
-            subreddit: sectionTitle,
-        }]);
+    const addSections = subreddits => {
+        setSections([...sections, ...subreddits.map((sectionTitle, i) => {
+            return {
+                title: sectionTitle,
+                imgName: '',
+                subreddit: sectionTitle,
+            }
+        })]);
     }
 
     return (
@@ -40,6 +42,7 @@ const SectionDropdown = props => {
                             return <Section 
                                 key={i.toString()}
                                 {...section}
+                                inboxLoading={inboxLoading}
                                 setInboxLoading={setInboxLoading}
                                 abortInboxFetch={abortInboxFetch}/>
                         })
@@ -49,7 +52,7 @@ const SectionDropdown = props => {
                             return <Option
                                 key={i.toString()}
                                 text={option}
-                                addSection={addSection}/>
+                                addSections={addSections}/>
                         })
                     }
                 </>

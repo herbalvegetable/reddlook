@@ -9,12 +9,13 @@ const Section = props => {
 
     const { subreddit, setSubreddit } = useContext(GlobalContext);
 
-    const { subreddit: subreddit_name, title, imgName, unreadNum, focused, numHighlighted, inboxLoading, setInboxLoading, abortInboxFetch } = props;
+    const { subreddit: subredditName, title, imgName, unreadNum, focused, numHighlighted, inboxLoading, setInboxLoading, abortInboxFetch } = props;
 
     const handleClick = e => {
-        if(inboxLoading) return;
+        if(inboxLoading || !subredditName) return;
+        console.log(subredditName, inboxLoading, !subredditName, inboxLoading || !subredditName);
         abortInboxFetch();
-        setSubreddit(subreddit_name);
+        setSubreddit(subredditName);
         setInboxLoading(true);
     }
 
