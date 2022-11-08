@@ -11,12 +11,38 @@ const r = new snoowrap({
 
 const getHotPostsBasic = async subredditName => {
     try{
+        console.log('Fetching Hot posts...');
         const posts = await r.getSubreddit(subredditName).getHot({limit: 175});
-        // console.log(posts.map(post => {
-        //     let p = {...post}
-        //     delete p.comments;
-        //     return p;
-        // }));
+
+        const basicDetails = posts.map((post, i) => {
+            return {
+                id: post.id,
+                author: post.author.name,
+                title: post.title.slice(0, 50),
+                body: post.selftext.slice(0, 50),
+                time: post.created_utc,
+                score: post.score,
+                commentsNum: post.num_comments,
+                unread: true,
+
+                profileIconColour: randomColor({
+                    luminosity: 'dark',
+                }),
+            }
+        });
+        return basicDetails;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+const getTopPostsBasic = async (subredditName, timeFilter) => {
+    try{
+        const posts = await r
+            .getSubreddit(subredditName)
+            .getTop({time: timeFilter, limit: 175});
+
         const basicDetails = posts.map((post, i) => {
             return {
                 id: post.id,
@@ -55,7 +81,6 @@ const getPost = async postId => {
             time: rawPost.created_utc,
             score: rawPost.score,
             commentsNum: rawPost.num_comments,
-            // comments: rawPost.comments,
             subreddit: rawPost.subreddit.display_name,
 
             url: rawPost.url,
@@ -98,6 +123,7 @@ const getPostComments = async postId => {
 
 module.exports = {
     getHotPostsBasic,
+    getTopPostsBasic,
     getPost,
     getPostComments,
 }

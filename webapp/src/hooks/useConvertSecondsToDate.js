@@ -18,6 +18,10 @@ export const convertSecondsToShortDate = s => {
     if(d.isAfter(dayjs().subtract(1, 'week'))){
         return d.format('ddd HH:mm');
     }
+
+    if(d.isBefore(dayjs().subtract(1, 'year'))){
+        return d.format('ddd DD/MM/YYYY');
+    }
     
     return d.format('ddd DD/MM');
 }

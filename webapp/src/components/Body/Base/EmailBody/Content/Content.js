@@ -75,7 +75,14 @@ const Content = props => {
         }
     }, [selectedEmailId]);
 
-    const headerHeight = Math.max(Math.floor(headerEl.current.getBoundingClientRect().height - 20), 50);
+    const [headerHeight, setHeaderHeight] = useState(50);
+    // useEffect(() => {
+    //     setHeaderHeight(Math.max(Math.floor(headerEl?.current?.getBoundingClientRect().height - 20), 50));
+    // }, [headerEl]);
+    // useEffect(() => {
+    //     console.log(`Headerheight: ${headerHeight}`);
+    // }, [headerHeight]);
+
     const getCommentYPos = index => {
         return commentListRef.current.children[index]?.offsetTop - commentListRef.current.offsetTop/2 + mainContentRef.current.getBoundingClientRect().height/2;
     }
@@ -97,7 +104,9 @@ const Content = props => {
             {
                 Object.keys(selectedEmail).length > 0 ?
                 <>
-                    <div className={styles.header} ref={headerEl}>
+                    <div 
+                        className={styles.header} 
+                        ref={headerEl}>
                         <span className={styles.title}>
                             (REDForum) Comments: {selectedEmail.title} - RED:#{randSubjectNumber}{loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>

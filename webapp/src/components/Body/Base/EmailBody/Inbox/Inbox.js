@@ -14,32 +14,67 @@ const Inbox = props => {
 
     const [cachedEmails, setCachedEmails] = useState({});
     const [emails, setEmails] = useState([]);
+    const [postType, setPostType] = useState('hot');
 
     const emailListEl = useRef(null);
 
     const { signal } = inboxLoadingController;
 
     useEffect(() => {
-        if(subreddit){
-            fetch(`http://localhost:5000/${subreddit}/hot`, {method: 'GET', signal: signal})
-                .then(res => res.json()
-                    .then(data => {
-                        // console.log(data);
-                        setEmails(data);
-                        setSelectedEmailIndex(0);
+        console.log(`Fetching posts: ${postType}`);
+        fetchPosts(postType);
+        // if(subreddit){
+        //     fetch(`http://localhost:5000/${subreddit}/hot`, {method: 'GET', signal: signal})
+        //         .then(res => res.json()
+        //             .then(data => {
+        //                 // console.log(data);
+        //                 setEmails(data);
+        //                 setSelectedEmailIndex(0);
 
-                        emailListEl?.current?.scrollTo({
-                            top: 0,
-                            behavior: 'smooth',
-                        });
+        //                 emailListEl?.current?.scrollTo({
+        //                     top: 0,
+        //                     behavior: 'smooth',
+        //                 });
 
-                        setInboxLoading(false);
+        //                 setInboxLoading(false);
                         
-                    })
-                    .catch(err => console.log(err)))
-                .catch(err => console.log(err));
+        //             })
+        //             .catch(err => console.log(err)))
+        //         .catch(err => console.log(err));
+        // }
+    }, [subreddit, postType]);
+
+    const fetchPosts = type => {
+        let url = '';
+        switch(type){
+            case 'hot':
+            url = `http://localhost:5000/${subreddit}/hot`;
+            break;
+            case 'top':
+            url = `http://localhost:5000/${subreddit}/top?time=all`
+            break;
         }
-    }, [subreddit]);
+
+        if(!subreddit) return;
+
+        fetch(url, {method: 'GET', signal})
+            .then(res => res.json()
+                .then(data => {
+                    // console.log(data);
+                    setEmails(data);
+                    setSelectedEmailIndex(0);
+
+                    emailListEl?.current?.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                    });
+
+                    setInboxLoading(false);
+                    
+                })
+                .catch(err => console.log(err)))
+            .catch(err => console.log(err));
+    }
 
     useEffect(() => {
         console.log(selectedEmailIndex);
@@ -80,7 +115,17 @@ const Inbox = props => {
                     <span className={styles.text}>{inboxLoading ? 'Loading...' : 'Other'}</span>
                 </div>
                 
-                <div className={styles.filter_container}>
+                <div 
+                    className={styles.filter_container}
+                    onClick={e => {
+                        e.preventDefault();
+
+                        if(inboxLoading) return;
+                        const postTypeList = ['hot', 'top'];
+                        const nextTypeIndex = postTypeList.indexOf(postType) + 1;
+                        setPostType(postTypeList[nextTypeIndex > postTypeList.length - 1 ? 0 : nextTypeIndex]);
+                        setInboxLoading(true);
+                    }}>
                     <div className={styles.img_container}>
                         <Image 
                             src={'./media/inbox/filter.png'}
