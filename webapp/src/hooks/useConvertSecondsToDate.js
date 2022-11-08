@@ -20,7 +20,7 @@ export const convertSecondsToShortDate = s => {
     }
 
     if(d.isBefore(dayjs().subtract(1, 'year'))){
-        return d.format('ddd DD/MM/YYYY');
+        return d.format('DD/MM/YYYY');
     }
     
     return d.format('ddd DD/MM');

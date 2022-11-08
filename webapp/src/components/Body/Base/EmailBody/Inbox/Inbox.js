@@ -14,7 +14,17 @@ const Inbox = props => {
 
     const [cachedEmails, setCachedEmails] = useState({});
     const [emails, setEmails] = useState([]);
+
     const [postType, setPostType] = useState('hot');
+    const postTypeDisplay = {
+        hot: 'Hot',
+        top: 'Top (All)',
+        topYear: 'Top (Year)',
+        topMonth: 'Top (Month)',
+        topWeek: 'Top (Week)',
+    }
+    const [isHoverFilter, setIsHoverFilter] = useState(false);
+    const [isOpenFilter, setIsOpenFilter] = useState(false);
 
     const emailListEl = useRef(null);
 
@@ -23,26 +33,7 @@ const Inbox = props => {
     useEffect(() => {
         console.log(`Fetching posts: ${postType}`);
         fetchPosts(postType);
-        // if(subreddit){
-        //     fetch(`http://localhost:5000/${subreddit}/hot`, {method: 'GET', signal: signal})
-        //         .then(res => res.json()
-        //             .then(data => {
-        //                 // console.log(data);
-        //                 setEmails(data);
-        //                 setSelectedEmailIndex(0);
-
-        //                 emailListEl?.current?.scrollTo({
-        //                     top: 0,
-        //                     behavior: 'smooth',
-        //                 });
-
-        //                 setInboxLoading(false);
-                        
-        //             })
-        //             .catch(err => console.log(err)))
-        //         .catch(err => console.log(err));
-        // }
-    }, [subreddit, postType]);
+    }, [subreddit]);
 
     const fetchPosts = type => {
         let url = '';
@@ -79,8 +70,8 @@ const Inbox = props => {
     useEffect(() => {
         console.log(selectedEmailIndex);
         if(selectedEmailIndex != null){
-            console.log(emails[selectedEmailIndex].id || null);
-            setSelectedEmailId(emails[selectedEmailIndex].id || null);
+            console.log(emails[selectedEmailIndex]?.id || null);
+            setSelectedEmailId(emails[selectedEmailIndex]?.id || null);
         }
     }, [selectedEmailIndex]);
 
@@ -120,18 +111,36 @@ const Inbox = props => {
                     onClick={e => {
                         e.preventDefault();
 
-                        if(inboxLoading) return;
-                        const postTypeList = ['hot', 'top'];
-                        const nextTypeIndex = postTypeList.indexOf(postType) + 1;
-                        setPostType(postTypeList[nextTypeIndex > postTypeList.length - 1 ? 0 : nextTypeIndex]);
-                        setInboxLoading(true);
-                    }}>
+                        // if(inboxLoading) return;
+                        // const postTypeList = ['hot', 'top'];
+                        // const nextTypeIndex = postTypeList.indexOf(postType) + 1;
+                        // setPostType(postTypeList[nextTypeIndex > postTypeList.length - 1 ? 0 : nextTypeIndex]);
+                        // fetchPosts(postType);
+                        // setInboxLoading(true);
+
+                        setIsOpenFilter(!isOpenFilter);
+                    }}
+                    
+                    onMouseEnter={e => setIsHoverFilter(true)}
+                    onMouseLeave={e => setIsHoverFilter(false)}>
                     <div className={styles.img_container}>
                         <Image 
                             src={'./media/inbox/filter.png'}
                             className={styles.img}/>
                     </div>
-                    <span className={styles.text}>Filter</span>
+                    <span 
+                        className={styles.text}>
+                        {isHoverFilter ? postTypeDisplay[postType] : 'Filter'}
+                    </span>
+                    {
+                        isOpenFilter &&
+                        <div className={styles.filter_dropdown}>
+                        {/* {
+                            ['Hot', 'Top (All)', 'Top (Year)']
+                        } */}
+                            FilterDropdown
+                        </div>
+                    }
                 </div>
             </div>
 
