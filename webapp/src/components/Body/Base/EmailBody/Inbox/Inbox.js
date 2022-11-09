@@ -22,6 +22,7 @@ const Inbox = props => {
         topYear: 'Top (Year)',
         topMonth: 'Top (Month)',
         topWeek: 'Top (Week)',
+        topDay: 'Top (Day)',
     }
     const [isHoverFilter, setIsHoverFilter] = useState(false);
     const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -43,6 +44,18 @@ const Inbox = props => {
             break;
             case 'top':
             url = `http://localhost:5000/${subreddit}/top?time=all`
+            break;
+            case 'topYear':
+            url = `http://localhost:5000/${subreddit}/top?time=year`
+            break;
+            case 'topMonth':
+            url = `http://localhost:5000/${subreddit}/top?time=month`
+            break;
+            case 'topWeek':
+            url = `http://localhost:5000/${subreddit}/top?time=week`
+            break;
+            case 'topDay':
+            url = `http://localhost:5000/${subreddit}/top?time=day`
             break;
         }
 
@@ -103,20 +116,13 @@ const Inbox = props => {
                     <span className={styles.text}>Focused</span>
                 </div>
                 <div className={styles.section}>
-                    <span className={styles.text}>{inboxLoading ? 'Loading...' : 'Other'}</span>
+                    <span className={styles.text}>{inboxLoading ? 'Loading...' : isHoverFilter ? postTypeDisplay[postType] : 'Other'}</span>
                 </div>
                 
                 <div 
                     className={styles.filter_container}
                     onClick={e => {
                         e.preventDefault();
-
-                        // if(inboxLoading) return;
-                        // const postTypeList = ['hot', 'top'];
-                        // const nextTypeIndex = postTypeList.indexOf(postType) + 1;
-                        // setPostType(postTypeList[nextTypeIndex > postTypeList.length - 1 ? 0 : nextTypeIndex]);
-                        // fetchPosts(postType);
-                        // setInboxLoading(true);
 
                         setIsOpenFilter(!isOpenFilter);
                     }}
@@ -130,15 +136,31 @@ const Inbox = props => {
                     </div>
                     <span 
                         className={styles.text}>
-                        {isHoverFilter ? postTypeDisplay[postType] : 'Filter'}
+                        Filter
                     </span>
                     {
                         isOpenFilter &&
                         <div className={styles.filter_dropdown}>
-                        {/* {
-                            ['Hot', 'Top (All)', 'Top (Year)']
-                        } */}
-                            FilterDropdown
+                        {
+                            Object.entries(postTypeDisplay).map(([type, typeStr], i) => {
+                                return <div 
+                                    key={i.toString()}
+                                    className={styles.type_container}
+                                    onClick={e => {
+                                        setPostType(type);
+                                        fetchPosts(type);
+                                        setInboxLoading(true);
+                                    }}>
+                                    <div className={styles.checked_container}>
+
+                                    </div>
+                                    <div className={styles.image_container}>
+
+                                    </div>
+                                    <span className={styles.text}>{typeStr}</span>
+                                </div>
+                            })
+                        }
                         </div>
                     }
                 </div>
