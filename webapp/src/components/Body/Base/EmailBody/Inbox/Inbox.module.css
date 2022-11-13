@@ -94,3 +94,28 @@
     overflow-y: scroll;
     max-height: calc(100vh - 180px);
 }
+
+.main .email_list .subreddit_title{
+    display: flex;
+    flex-direction: column;
+
+    max-width: 328px;
+    height: 38px;
+
+    padding: 9px 0 12px calc(3em + 6px);
+}
+.main .email_list .subreddit_title:hover{
+    background-color: #f0f0f0;
+}
+
+.main .email_list .subreddit_title .top_text{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+}
+.main .email_list .subreddit_title .subreddit_text{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F6CBD;
+}

@@ -92,6 +92,13 @@ const Inbox = props => {
 
             <div className={styles.email_list} ref={emailListEl}>
             {
+                subreddit && 
+                <div className={styles.subreddit_title}>
+                    <span className={styles.top_text}>Other: New Conversations</span>
+                    <span className={styles.subreddit_text}>Notifications: {subreddit}</span>
+                </div>
+            }
+            {
                 emails.map((email, i) => {
                     return <Email 
                         key={i.toString()}
