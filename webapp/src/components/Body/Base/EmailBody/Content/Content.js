@@ -18,6 +18,7 @@ const Content = props => {
     const { selectedEmailId, controller, loading, setLoading } = props;
     const { signal } = controller;
 
+    const headerEl = useRef(null);
     const bodyEl = useRef(null);
 
     const [selectedEmail, setSelectedEmail] = useState({});
@@ -74,13 +75,21 @@ const Content = props => {
         }
     }, [selectedEmailId]);
 
+    const [headerHeight, setHeaderHeight] = useState(50);
+    // useEffect(() => {
+    //     setHeaderHeight(Math.max(Math.floor(headerEl?.current?.getBoundingClientRect().height - 20), 50));
+    // }, [headerEl]);
+    // useEffect(() => {
+    //     console.log(`Headerheight: ${headerHeight}`);
+    // }, [headerHeight]);
+
     const getCommentYPos = index => {
         return commentListRef.current.children[index]?.offsetTop - commentListRef.current.offsetTop/2 + mainContentRef.current.getBoundingClientRect().height/2;
     }
     const updateCurrCommentIndex = () => {
         if(!commentListRef.current) return;
         const commentInfoList = [...commentListRef.current.children].map((child, i) => {
-                return {pos: getCommentYPos(i) - 60, index: i};
+                return {pos: getCommentYPos(i) - headerHeight - 10, index: i};
         });
         const closestCommentIndex = commentInfoList.filter(comment => comment.pos > bodyEl.current.scrollTop).sort((a, b) => a.pos - b.pos)[0]?.index || 0;
         // console.log(closestCommentIndex);
@@ -95,7 +104,9 @@ const Content = props => {
             {
                 Object.keys(selectedEmail).length > 0 ?
                 <>
-                    <div className={styles.header}>
+                    <div 
+                        className={styles.header} 
+                        ref={headerEl}>
                         <span className={styles.title}>
                             (REDForum) Comments: {selectedEmail.title} - RED:#{randSubjectNumber}{loading && <span className={styles.loading}>  ...Loading</span>}
                         </span>
@@ -103,8 +114,9 @@ const Content = props => {
                             className={styles.zoom_options}
                             onClick={e => {
                                 if(!commentListRef.current) return;
+                                console.log(headerEl.current.getBoundingClientRect().height);
                                 bodyEl?.current?.scrollTo({
-                                    top: getCommentYPos(currCommentIndex) - 50,
+                                    top: getCommentYPos(currCommentIndex) - headerHeight,
                                     behavior: 'smooth',
                                 });
                             }}>

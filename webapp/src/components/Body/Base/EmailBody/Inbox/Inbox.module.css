@@ -59,6 +59,8 @@
 }
 
 .main .header .filter_container{
+    position: relative;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -88,6 +90,41 @@
 }
 .main .header .filter_container .text{
     font-size: 14px;
+}
+.main .header .filter_dropdown{
+    position: absolute;
+
+    top: 38px;
+    left: 0px;
+    width: 180px;
+    z-index: 999;
+    border-radius: 8px;
+
+    box-shadow: 0 8px 16px rgb(0 0 0 / 14%), 0 0 2px rgb(0 0 0 / 12%);
+    background-color: #fff;
+
+    transition: 0.1s;
+}
+.main .header .filter_dropdown > .type_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    min-height: 36px;
+    padding: 0 0.5em 0 0.25em;
+}
+.main .header .filter_dropdown > .type_container:hover{
+    background-color: #F5F5F5;
+}
+.main .header .filter_dropdown > .type_container .checked_container{
+
+}
+.main .header .filter_dropdown > .type_container .image_container{
+
+}
+.main .header .filter_dropdown > .type_container .text{
+
 }
 
 .main .email_list{

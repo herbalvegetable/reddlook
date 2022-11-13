@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getHotPostsBasic, getPost, getPostComments } = require('./redditApi'); 
+const { getHotPostsBasic, getTopPostsBasic, getPost, getPostComments } = require('./redditApi'); 
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,6 +20,13 @@ app.use(cors());
 app.get('/:subredditName/hot', async (req, res) => {
     const { subredditName } = req.params;
     const posts = await getHotPostsBasic(subredditName);
+    res.send(posts);
+});
+
+app.get('/:subredditName/top', async (req, res) => {
+    const { subredditName } = req.params;
+    const { time } = req.query;
+    const posts = await getTopPostsBasic(subredditName, time);
     res.send(posts);
 });
 
