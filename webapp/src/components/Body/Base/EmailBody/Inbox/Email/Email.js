@@ -39,7 +39,7 @@ const Email = props => {
             {
                 (isHover || selected) ? 
 
-                <input type='radio' className={styles.radio_btn}/>
+                <input type='radio' className={styles.radio_btn} onClick={e => e.preventDefault()}/>
 
                 :
 
