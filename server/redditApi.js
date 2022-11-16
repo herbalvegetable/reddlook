@@ -5,8 +5,8 @@ require('dotenv').config();
 
 const r = new snoowrap({
     userAgent: 'My Post Scraper Bot',
-    clientId: 'acRzThSEqOqaT4pEkjtDeg',
-    clientSecret: '4Njh5tclnlHiIdcHvlb9SDDr3mfXYQ',
+    clientId: process.env.REDDIT_API_CLIENT_ID,
+    clientSecret: process.env.REDDIT_API_CLIENT_SECRET,
     username: process.env.REDDIT_API_USERNAME,
     password: process.env.REDDIT_API_PASSWORD,
 });
