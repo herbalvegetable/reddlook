@@ -40,22 +40,22 @@ const Inbox = props => {
         let url = '';
         switch(type){
             case 'hot':
-            url = `http://192.168.0.62:5000/${subreddit}/hot`;
+            url = `http://${window.location.hostname}:5000/${subreddit}/hot`;
             break;
             case 'top':
-            url = `http://192.168.0.62:5000/${subreddit}/top?time=all`
+            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=all`
             break;
             case 'topYear':
-            url = `http://192.168.0.62:5000/${subreddit}/top?time=year`
+            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=year`
             break;
             case 'topMonth':
-            url = `http://192.168.0.62:5000/${subreddit}/top?time=month`
+            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=month`
             break;
             case 'topWeek':
-            url = `http://192.168.0.62:5000/${subreddit}/top?time=week`
+            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=week`
             break;
             case 'topDay':
-            url = `http://192.168.0.62:5000/${subreddit}/top?time=day`
+            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=day`
             break;
         }
 
