@@ -18,7 +18,7 @@ const EmailBody = props => {
         controller.abort();
     }
 
-    const [inboxLoading, setInboxLoading] = useState(false);
+    const [inboxLoading, setInboxLoading] = useState(true);
     const inboxLoadingController = new AbortController();
     const abortInboxFetch = () => {
         console.log('Aborting Inbox fetch...');

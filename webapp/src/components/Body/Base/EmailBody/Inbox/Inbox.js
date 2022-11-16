@@ -175,6 +175,8 @@ const Inbox = props => {
                 </div>
             }
             {
+                emails.length > 0 ?
+
                 emails.map((email, i) => {
                     return <Email 
                         key={i.toString()}
@@ -187,6 +189,16 @@ const Inbox = props => {
                         abortFetch={abortFetch}
                         setLoading={setLoading}/>
                 })
+
+                :
+
+                <div className={styles.no_emails_container}>
+                    <Image 
+                        src={'https://res.cdn.office.net/owamail/20221104009.06/resources/images/illustration_folder-hash-e058a023.svg'}
+                        className={styles.img}/>
+                    <span className={styles.text_bold}>Nothing in folder</span>
+                    <span className={styles.text}>Looks empty over here.</span>
+                </div>
             }
             </div>
         </div>

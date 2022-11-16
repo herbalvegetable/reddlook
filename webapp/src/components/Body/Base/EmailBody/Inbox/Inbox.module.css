@@ -128,8 +128,10 @@
 }
 
 .main .email_list{
-    overflow-y: scroll;
-    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    min-height: calc(100vh - 180px);
+
+    background-color: #fff;
 }
 
 .main .email_list .subreddit_title{
@@ -155,4 +157,26 @@
     font-size: 14px;
     font-weight: 600;
     color: #0F6CBD;
+}
+
+.main .no_emails_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: calc(100vh - 350px);
+}
+.main .no_emails_container .img{
+    
+}
+.main .no_emails_container .text_bold{
+    font-weight: 600;
+    font-size: 14px;
+    color: #424242;
+    padding-top: 0.5em;
+}
+.main .no_emails_container .text{
+    font-size: 14px;
+    padding-top: 0.2em;
 }
