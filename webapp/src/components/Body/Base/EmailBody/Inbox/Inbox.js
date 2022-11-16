@@ -64,7 +64,7 @@ const Inbox = props => {
         fetch(url, {method: 'GET', signal})
             .then(res => res.json()
                 .then(data => {
-                    // console.log(data);
+                    console.log(data);
                     setEmails(data);
                     setSelectedEmailIndex(0);
 
