@@ -11,7 +11,7 @@ const SearchBar = props => {
         <div className={styles.main}>
             <div className={styles.magnifying_glass}>
                 <Image
-                    src={'./media/magnifying_glass.png'}
+                    src={'/media/magnifying_glass.png'}
                     className={styles.img}/>
             </div>
             <div

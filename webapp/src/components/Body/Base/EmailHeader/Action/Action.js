@@ -10,7 +10,7 @@ const Action = props => {
     return (
         <div className={`${styles.action} ${expanded ? styles.expanded : ''}`}>
             <Image 
-                src={`./media/ribbon/${imgName}.png`}
+                src={`/media/ribbon/${imgName}.png`}
                 className={styles.img}/>
             {
                 expanded && <span className={styles.title}>{title}</span>

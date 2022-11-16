@@ -29,7 +29,7 @@ const Sidebar = props => {
                         className={styles.action}
                         title={action}>
                         <Image 
-                            src={`./media/sidebar/${i+1}.png`}
+                            src={`/media/sidebar/${i+1}.png`}
                             className={styles.img}/>
                     </div>
                 })

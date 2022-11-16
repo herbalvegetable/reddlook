@@ -296,3 +296,25 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
 }
+
+.main .unselected_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+}
+.main .unselected_container .img{
+    
+}
+.main .unselected_container .text_bold{
+    font-weight: 600;
+    font-size: 14px;
+    color: #424242;
+    padding-top: 0.5em;
+}
+.main .unselected_container .text{
+    font-size: 14px;
+    padding-top: 0.2em;
+}

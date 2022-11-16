@@ -62,17 +62,17 @@ const Email = props => {
                                     markUnread(index);
                                 }}>
                                 <Image 
-                                    src='./media/inbox/mark_unread.png'
+                                    src='/media/inbox/mark_unread.png'
                                     className={styles.img}/>
                             </div>
                             <div className={styles.action}>
                                 <Image 
-                                    src='./media/inbox/flag.png'
+                                    src='/media/inbox/flag.png'
                                     className={styles.img}/>
                             </div>
                             <div className={styles.action}>
                                 <Image 
-                                    src='./media/inbox/pin.png'
+                                    src='/media/inbox/pin.png'
                                     className={styles.img}/>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ const Email = props => {
                         onMouseOver={() => setIsHoverDelete(true)}
                         onMouseOut={() => setIsHoverDelete(false)}>
                         <Image 
-                            src={`./media/inbox/${isHoverDelete ? 'red_delete': 'delete'}.png`}
+                            src={`/media/inbox/${isHoverDelete ? 'red_delete': 'delete'}.png`}
                             className={styles.img}/>
                     </div>
                 }

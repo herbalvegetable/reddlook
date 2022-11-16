@@ -25,7 +25,7 @@ const Section = props => {
             onClick={handleClick}>
             <div className={styles.img_container}>
                 <Image 
-                    src={`./media/sections/${imgName || 'folder'}.png`}
+                    src={`/media/sections/${imgName || 'folder'}.png`}
                     className={styles.img}/>
             </div>
             <div className={styles.text_container}>

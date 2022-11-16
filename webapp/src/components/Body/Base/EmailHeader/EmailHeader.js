@@ -35,13 +35,13 @@ const EmailHeader = props => {
                     <div className={styles.new_email_container}>
                         <div className={styles.new_email}>
                             <Image 
-                                src={'./media/ribbon/new_email.png'}
+                                src={`/media/ribbon/new_email.png`}
                                 className={styles.img}/>
                             <span className={styles.text}>New email</span>
                         </div>
                         <div className={styles.dropdown}>
                             <Image 
-                                src={'./media/ribbon/white_dropdown.png'}
+                                src={'/media/ribbon/white_dropdown.png'}
                                 className={styles.img}/>
                         </div>
                     </div>
@@ -71,13 +71,13 @@ const EmailHeader = props => {
                     <div className={styles.quick_steps_container}>
                         <div className={styles.action}>
                             <Image 
-                                src={`./media/ribbon/quick_steps.png`}
+                                src={`/media/ribbon/quick_steps.png`}
                                 className={styles.img}/>
                             <span className={styles.title}>Quick steps</span>
                         </div>
                         <div className={styles.dropdown}>
                             <Image 
-                                src={`./media/ribbon/dropdown.png`}
+                                src={`/media/ribbon/dropdown.png`}
                                 className={styles.img}/>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ const EmailHeader = props => {
                 </div>
                 <div className={styles.ribbon_dropdown}>
                     <Image 
-                        src={`./media/ribbon/dropdown.png`}
+                        src={`/media/ribbon/dropdown.png`}
                         className={styles.img}/>
                 </div>
             </div>

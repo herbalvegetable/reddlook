@@ -10,7 +10,7 @@ const AppLauncher = props => {
     return (
         <div className={styles.app_launcher}>
             <Image 
-                src={'./media/app-launcher.png'}
+                src={'/media/app-launcher.png'}
                 className={styles.img}/>
         </div>
     )

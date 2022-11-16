@@ -15,7 +15,7 @@ const ActionBar = props => {
                 actionList.map((action, i) => {
                     return <div key={i.toString()} className={styles.action}>
                         <Image 
-                            src={`./media/controls/action_${i+1}.png`}
+                            src={`/media/controls/action_${i+1}.png`}
                             className={styles.img}/>
                     </div>
                 })

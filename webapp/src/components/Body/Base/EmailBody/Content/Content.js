@@ -121,10 +121,10 @@ const Content = props => {
                                 });
                             }}>
                             <Image 
-                                src={'./media/content/zoom_in.png'}
+                                src={'/media/content/zoom_in.png'}
                                 className={styles.zoom_in_img}/>
                             <Image
-                                src={'./media/content/dropdown.png'}
+                                src={'/media/content/dropdown.png'}
                                 className={styles.dropdown_img}/>
                         </div>
                     </div>
@@ -151,27 +151,27 @@ const Content = props => {
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
                                             <Image 
-                                                src={'./media/content/smiley_face.png'}
+                                                src={'/media/content/smiley_face.png'}
                                                 className={styles.img}/>
                                         </div>
                                         <div className={styles.action}>
                                             <Image 
-                                                src={'./media/content/reply.png'}
+                                                src={'/media/content/reply.png'}
                                                 className={styles.img}/>
                                         </div>
                                         <div className={styles.action}>
                                             <Image 
-                                                src={'./media/content/reply_all.png'}
+                                                src={'/media/content/reply_all.png'}
                                                 className={styles.img}/>
                                         </div>
                                         <div className={styles.action}>
                                             <Image 
-                                                src={'./media/content/forward.png'}
+                                                src={'/media/content/forward.png'}
                                                 className={styles.img}/>
                                         </div>
                                         <div className={styles.action}>
                                             <Image 
-                                                src={'./media/content/more.png'}
+                                                src={'/media/content/more.png'}
                                                 className={styles.img}/>
                                         </div>
                                     </div>
@@ -287,21 +287,21 @@ const Content = props => {
                                     <Button
                                         className={styles.action}>
                                         <Image 
-                                            src={'./media/content/reply.png'}
+                                            src={'/media/content/reply.png'}
                                             className={styles.img}/>
                                         <span className={styles.text}>Reply</span>
                                     </Button>
                                     <Button
                                         className={styles.action}>
                                         <Image 
-                                            src={'./media/content/reply_all.png'}
+                                            src={'/media/content/reply_all.png'}
                                             className={styles.img}/>
                                         <span className={styles.text}>Reply all</span>
                                     </Button>
                                     <Button
                                         className={styles.action}>
                                         <Image 
-                                            src={'./media/content/forward.png'}
+                                            src={'/media/content/forward.png'}
                                             className={styles.img}/>
                                         <span className={styles.text}>Forward</span>
                                     </Button>
@@ -314,10 +314,11 @@ const Content = props => {
                 :
 
                 <div className={styles.unselected_container}>
-                    <div className={styles.center_container}>
-                        <span className={styles.text_bold}>Select an item to read</span>
-                        <span className={styles.text}>Nothing is selected</span>
-                    </div>
+                    <Image 
+                        src={'https://res.cdn.office.net/owamail/20221104009.06/scripts/../resources/images/illustration_mail-hash-c4bc6831.svg'}
+                        className={styles.img}/>
+                    <span className={styles.text_bold}>Select an item to read</span>
+                    <span className={styles.text}>Nothing is selected</span>
                 </div>
             }
         </div>

@@ -109,7 +109,7 @@ const Inbox = props => {
             <div className={styles.header}>
                 <div className={styles.checkmark_img_container}>
                     <Image 
-                        src={'./media/inbox/checkmark.png'}
+                        src={'/media/inbox/checkmark.png'}
                         className={styles.img}/>
                 </div>
                 <div className={`${styles.section} ${styles.focused}`}>
@@ -131,7 +131,7 @@ const Inbox = props => {
                     onMouseLeave={e => setIsHoverFilter(false)}>
                     <div className={styles.img_container}>
                         <Image 
-                            src={'./media/inbox/filter.png'}
+                            src={'/media/inbox/filter.png'}
                             className={styles.img}/>
                     </div>
                     <span 

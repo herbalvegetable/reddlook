@@ -29,7 +29,7 @@ const SectionDropdown = props => {
             <div className={styles.title_container}>
                 <div className={styles.img_container}>
                     <Image
-                        src={`./media/sections/dropdown.png`}
+                        src={`/media/sections/dropdown.png`}
                         className={styles.img}/>
                 </div>
                 <span className={styles.text}>{title}</span>
