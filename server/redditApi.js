@@ -1,12 +1,14 @@
 const snoowrap = require('snoowrap');
 const randomColor = require('randomcolor');
 
+require('dotenv').config();
+
 const r = new snoowrap({
     userAgent: 'My Post Scraper Bot',
     clientId: 'acRzThSEqOqaT4pEkjtDeg',
     clientSecret: '4Njh5tclnlHiIdcHvlb9SDDr3mfXYQ',
-    username: 'Business-Bed-1098',
-    password: 'MelcO100',
+    username: process.env.REDDIT_API_USERNAME,
+    password: process.env.REDDIT_API_PASSWORD,
 });
 
 const getHotPostsBasic = async subredditName => {

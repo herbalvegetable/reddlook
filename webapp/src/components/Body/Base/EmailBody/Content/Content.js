@@ -35,7 +35,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`http://localhost:5000/${subreddit}/post/${selectedEmailId}`, {signal})
+            fetch(`http://192.168.0.62:5000/${subreddit}/post/${selectedEmailId}`, {signal})
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);
@@ -64,7 +64,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`http://localhost:5000/${subreddit}/comments/${selectedEmailId}`, {signal})
+            fetch(`http://192.168.0.62:5000/${subreddit}/comments/${selectedEmailId}`, {signal})
                 .then(res => res.json()
                     .then(data => {
                         setComments(data);
