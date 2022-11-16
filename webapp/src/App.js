@@ -35,21 +35,12 @@ function App() {
 						</>
 					}/>
 					<Route 
-						path='/'
+						path='*'
 						element={<Navigate to={`/mail/inbox/id/${getRandEmailId()}`} replace/>}
 					/>
-					<Route 
-						path='/mail/'
-						element={<Navigate to={`/`} replace/>}
-					/>
-					<Route 
-						path='/mail/inbox/'
-						element={<Navigate to={`/`} replace/>}
-					/>
-					<Route 
-						path='/mail/inbox/id/'
-						element={<Navigate to={`/`} replace/>}
-					/>
+					{/* <Route path='/mail/' element={<Navigate to={`/`} replace/>}/>
+					<Route path='/mail/inbox/' element={<Navigate to={`/`} replace/>}/>
+					<Route path='/mail/inbox/id/' element={<Navigate to={`/`} replace/>}/> */}
 				</Routes>
 			</BrowserRouter>
 		</div>
