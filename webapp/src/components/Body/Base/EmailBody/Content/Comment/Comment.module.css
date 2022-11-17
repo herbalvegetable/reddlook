@@ -45,3 +45,12 @@
 .main .body_text div img:hover{
     opacity: 1;
 }
+.main .body_text div span.spoiler{
+    background-color: rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
+    user-select: none;
+    transition: 0.2s;
+}
+.main .body_text div span.spoiler:hover{
+    cursor: pointer;
+}

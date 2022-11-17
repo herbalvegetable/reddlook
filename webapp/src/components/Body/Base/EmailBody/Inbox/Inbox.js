@@ -31,47 +31,56 @@ const Inbox = props => {
 
     const { signal } = inboxLoadingController;
 
+    const [afterName, setAfterName] = useState('') //after post name e.g. t3_uf78ut
+
     useEffect(() => {
         console.log(`Fetching posts: ${postType}`);
         fetchPosts(postType);
     }, [subreddit]);
 
-    const fetchPosts = type => {
-        let url = '';
+    const fetchPosts = (type, limit, after) => {
+        let postFilter = '';
         switch(type){
             case 'hot':
-            url = `http://${window.location.hostname}:5000/${subreddit}/hot`;
+            postFilter = `hot?`;
             break;
             case 'top':
-            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=all`
+            postFilter = `top?time=all&`
             break;
             case 'topYear':
-            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=year`
+            postFilter = `top?time=year&`
             break;
             case 'topMonth':
-            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=month`
+            postFilter = `top?time=month&`
             break;
             case 'topWeek':
-            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=week`
+            postFilter = `top?time=week&`
             break;
             case 'topDay':
-            url = `http://${window.location.hostname}:5000/${subreddit}/top?time=day`
+            postFilter = `top?time=day&`
             break;
         }
 
         if(!subreddit) return;
-
-        fetch(url, {method: 'GET', signal})
+        console.log(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''));
+        fetch(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
             .then(res => res.json()
                 .then(data => {
                     console.log(data);
-                    setEmails(data);
-                    setSelectedEmailIndex(0);
+                    setAfterName(data[data.length-1].name);
+                    console.log(data[data.length-1].name);
 
-                    emailListEl?.current?.scrollTo({
-                        top: 0,
-                        behavior: 'smooth',
-                    });
+                    if(after){
+                        setEmails([...emails, ...data]);
+                    }
+                    else{
+                        setEmails(data);
+                        setSelectedEmailIndex(0);
+                        emailListEl?.current?.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                        });
+                    }
 
                     setInboxLoading(false);
                     
@@ -166,7 +175,17 @@ const Inbox = props => {
                 </div>
             </div>
 
-            <div className={styles.email_list} ref={emailListEl}>
+            <div 
+                className={styles.email_list} 
+                ref={emailListEl}
+                onScroll={e => {
+                    if(e.target.offsetHeight + e.target.scrollTop <= e.target.scrollHeight * 0.85) return;
+                    if(inboxLoading) return;
+
+                    console.log(emails.length);
+                    fetchPosts(postType, emails.length, afterName);
+                    setInboxLoading(true);
+                }}>
             {
                 subreddit && 
                 <div className={styles.subreddit_title}>

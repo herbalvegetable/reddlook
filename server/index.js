@@ -19,14 +19,26 @@ app.use(cors());
 
 app.get('/:subredditName/hot', async (req, res) => {
     const { subredditName } = req.params;
-    const posts = await getHotPostsBasic(subredditName);
+    const { limit, after } = req.query;
+    console.log(limit, after);
+    var options = {
+        limit: parseInt(limit) || 15, 
+        ...(after && {after}),
+    }
+    console.log(options);
+    const posts = await getHotPostsBasic(subredditName, options);
     res.send(posts);
 });
 
 app.get('/:subredditName/top', async (req, res) => {
     const { subredditName } = req.params;
-    const { time } = req.query;
-    const posts = await getTopPostsBasic(subredditName, time);
+    const { time, limit, after } = req.query;
+    console.log(limit, parseInt(limit) || 15);
+    const posts = await getTopPostsBasic(subredditName, time, {
+        time: time || 'all',
+        count: parseInt(limit) || 15,
+        ...(after && {after}),
+    });
     res.send(posts);
 });
 

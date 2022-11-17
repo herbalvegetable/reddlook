@@ -11,14 +11,15 @@ const r = new snoowrap({
     password: process.env.REDDIT_API_PASSWORD,
 });
 
-const getHotPostsBasic = async subredditName => {
+const getHotPostsBasic = async (subredditName, options) => {
     try{
         console.log('Fetching Hot posts...');
-        const posts = await r.getSubreddit(subredditName).getHot({limit: 175});
+        const posts = await r.getSubreddit(subredditName).getHot(options);
 
         const basicDetails = posts.map((post, i) => {
             return {
                 id: post.id,
+                name: post.name,
                 author: post.author.name,
                 title: post.title.slice(0, 50),
                 body: post.selftext.slice(0, 50),
@@ -39,15 +40,16 @@ const getHotPostsBasic = async subredditName => {
     }
 }
 
-const getTopPostsBasic = async (subredditName, timeFilter) => {
+const getTopPostsBasic = async (subredditName, options) => {
     try{
         const posts = await r
             .getSubreddit(subredditName)
-            .getTop({time: timeFilter, limit: 175});
+            .getTop(options);
 
         const basicDetails = posts.map((post, i) => {
             return {
                 id: post.id,
+                name: post.name,
                 author: post.author.name,
                 title: post.title.slice(0, 50),
                 body: post.selftext.slice(0, 50),

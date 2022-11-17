@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import randomColor from 'randomcolor';
 import parse from 'html-react-parser';
 
@@ -10,6 +10,24 @@ const Comment = props => {
 
     // console.log(author, op, author == op);
 
+    // const [bodyHtml, setBodyHtml] = useState(parse(body));
+
+    const bodyTextRef = useRef(null);
+
+    const handleClickSpoiler = e => {
+        e.currentTarget.classList.toggle(styles.spoiler);
+    }
+
+    useEffect(() => {
+        [...bodyTextRef.current.children[0].children].map(p => {
+            [...p.children].map(span => {
+                if(span.getAttribute('class') != 'md-spoiler-text') return;
+                span.setAttribute('class', styles.spoiler);
+                span.onclick = handleClickSpoiler;
+            });
+        });
+    }, [body]);
+
     return (
         <div 
             className={`${styles.main} ${topmost ? styles.topmost : ''} ${bottommost ? styles.bottommost : ''}`}
@@ -17,7 +35,7 @@ const Comment = props => {
                 "--depth": depth,
             }}>
             <span className={`${styles.author} ${author == op ? styles.op : ''}`}>{author} ({score})</span>
-            <div className={styles.body_text}>{parse(body)}</div>
+            <div className={styles.body_text} ref={bodyTextRef}>{parse(body)}</div>
             {
                 replies.length > 0 && replies.map((comment, i) => {
                     return <Comment 
