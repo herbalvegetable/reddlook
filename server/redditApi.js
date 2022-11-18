@@ -41,10 +41,9 @@ const getHotPostsBasic = async (subredditName, options) => {
 }
 
 const getTopPostsBasic = async (subredditName, options) => {
+    console.log(options);
     try{
-        const posts = await r
-            .getSubreddit(subredditName)
-            .getTop(options);
+        const posts = await r.getSubreddit(subredditName).getTop(options);
 
         const basicDetails = posts.map((post, i) => {
             return {

@@ -51,7 +51,7 @@ const Email = props => {
 
             <div className={styles.content}>
                 <div className={styles.top_row}>
-                    <div className={`${styles.author} ${unread ? styles.unread : ''}`}>{author} /RED - No Reply</div>
+                    <div className={`${styles.author} ${unread ? styles.unread : ''}`}>{author} /RED#{score} - No Reply</div>
                     {
                         isHover && <div className={styles.actions}>
                             <div 

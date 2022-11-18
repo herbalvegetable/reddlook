@@ -126,6 +126,7 @@ const Inbox = props => {
                 </div>
                 <div className={styles.section}>
                     <span className={styles.text}>{inboxLoading ? 'Loading...' : isHoverFilter ? postTypeDisplay[postType] : 'Other'}</span>
+                    <span className={styles.email_num}>{emails.length}</span>
                 </div>
                 
                 <div 
@@ -179,11 +180,11 @@ const Inbox = props => {
                 className={styles.email_list} 
                 ref={emailListEl}
                 onScroll={e => {
-                    if(e.target.offsetHeight + e.target.scrollTop <= e.target.scrollHeight * 0.85) return;
+                    if(e.target.offsetHeight + e.target.scrollTop <= e.target.scrollHeight * (emails.length < 750 ? 0.9 : 0.99)) return;
                     if(inboxLoading) return;
 
                     console.log(emails.length);
-                    fetchPosts(postType, emails.length, afterName);
+                    fetchPosts(postType, Math.min(emails.length, 300), afterName);
                     setInboxLoading(true);
                 }}>
             {
