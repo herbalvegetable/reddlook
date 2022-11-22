@@ -62,8 +62,8 @@ const Inbox = props => {
         }
 
         if(!subreddit) return;
-        console.log(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''));
-        fetch(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
+        // console.log(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''));
+        fetch(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 15}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
             .then(res => res.json()
                 .then(data => {
                     console.log(data);
@@ -180,7 +180,16 @@ const Inbox = props => {
                 className={styles.email_list} 
                 ref={emailListEl}
                 onScroll={e => {
-                    if(e.target.offsetHeight + e.target.scrollTop <= e.target.scrollHeight * (emails.length < 750 ? 0.9 : 0.99)) return;
+                    const getLoadScrollPerc = emailCount => {
+                        if(emailCount < 20) return 0.1;
+                        if(emailCount < 50) return 0.5;
+                        if(emailCount < 100) return 0.65;
+                        if(emailCount < 400) return 0.75;
+                        if(emailCount < 750) return 0.9;
+                        return 0.99;
+                    }
+
+                    if(e.target.offsetHeight + e.target.scrollTop <= e.target.scrollHeight * getLoadScrollPerc(emails.length)) return;
                     if(inboxLoading) return;
 
                     console.log(emails.length);
