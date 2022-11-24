@@ -1,5 +1,25 @@
 import { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
+import { 
+    Delete20Regular,
+    Archive20Regular,
+    ShieldError20Regular,
+    Broom20Regular,
+    FolderArrowRight20Regular,
+    ArrowReply20Regular,
+    ArrowReplyAll20Regular,
+    ArrowForward20Regular,
+    Flash20Regular,
+    MailRead20Regular,
+    Tag20Regular,
+    Flag20Regular,
+    Pin20Regular,
+    Clock20Regular,
+    ArchiveSettings20Regular,
+    ArrowUndo20Regular,
+    AppsAddIn20Regular,
+    MoreHorizontal20Regular,
+ } from '@fluentui/react-icons';
 
 import styles from './EmailHeader.module.css';
 
@@ -15,7 +35,7 @@ const EmailHeader = props => {
         <div className={styles.header}>
             <div className={styles.tabs}>
             {
-                ['Home', 'View'].map((text, i) => {
+                ['Home', 'View', 'Help'].map((text, i) => {
                     return <div 
                         key={i.toString()}
                         className={styles.tab_container}>
@@ -47,32 +67,48 @@ const EmailHeader = props => {
                     </div>
 
                     <ActionWithDropdown 
-                        imgName='delete'/>
+                        imgName='delete'
+                        IconEl={Delete20Regular}
+                        iconColor='#616161'/>
                     <Action 
-                        imgName='archive'/>
+                        imgName='archive'
+                        IconEl={Archive20Regular}
+                        iconColor='#498205'/>
                     <ActionWithDropdown 
-                        imgName='report'/>
+                        imgName='report'
+                        IconEl={ShieldError20Regular}
+                        iconColor='#a4262c'/>
                     <Action 
-                        imgName='sweep'/>
+                        imgName='sweep'
+                        IconEl={Broom20Regular}
+                        iconColor='#616161'/>
                     <ActionWithDropdown 
-                        imgName='move_to_folder'/>
+                        imgName='move_to_folder'
+                        IconEl={FolderArrowRight20Regular}
+                        iconColor='#0078d4'/>
 
                     <Divider />
 
                     <Action 
-                        imgName='reply'/>
+                        imgName='reply'
+                        IconEl={ArrowReply20Regular}
+                        iconColor='#881798'/>
                     <Action 
-                        imgName='reply_all'/>
+                        imgName='reply_all'
+                        IconEl={ArrowReplyAll20Regular}
+                        iconColor='#881798'/>
                     <ActionWithDropdown 
-                        imgName='forward'/>
+                        imgName='forward'
+                        IconEl={ArrowForward20Regular}
+                        iconColor='#0078d4'/>
 
                     <Divider />
 
                     <div className={styles.quick_steps_container}>
                         <div className={styles.action}>
-                            <Image 
-                                src={`/media/ribbon/quick_steps.png`}
-                                className={styles.img}/>
+                            <Flash20Regular
+                                className={styles.img}
+                                primaryFill={'#aa8413'}/>
                             <span className={styles.title}>Quick steps</span>
                         </div>
                         <div className={styles.dropdown}>
@@ -85,26 +121,50 @@ const EmailHeader = props => {
                     <Action 
                         imgName='unread_email'
                         title='Read / Unread'
-                        expanded/>
+                        expanded
+                        IconEl={MailRead20Regular}
+                        iconColor='#616161'/>
 
                     <ActionWithDropdown 
-                        imgName='categorise'/>
+                        imgName='categorise'
+                        IconEl={Tag20Regular}
+                        iconColor='#616161'/>
                     <ActionWithDropdown 
-                        imgName='flag'/>
+                        imgName='flag'
+                        IconEl={Flag20Regular}
+                        iconColor='#a4262c'/>
                     <Action 
-                        imgName='pin'/>
+                        imgName='pin'
+                        IconEl={Pin20Regular}
+                        iconColor='#0078d4'/>
                     <ActionWithDropdown 
-                        imgName='snooze'/>
+                        imgName='snooze'
+                        IconEl={Clock20Regular}
+                        iconColor='#616161'/>
+                    <ActionWithDropdown 
+                        imgName='snooze'
+                        IconEl={ArchiveSettings20Regular}
+                        iconColor='#0078d4'/>
                     
                     <Divider />
 
                     <Action 
-                        imgName='undo'/>
+                        imgName='undo'
+                        IconEl={ArrowUndo20Regular}
+                        iconColor='#616161'/>
+                    
+                    <Divider />
+
+                    <Action 
+                        IconEl={AppsAddIn20Regular}
+                        iconColor='#ca5010'/>
                     
                     <Divider />
 
                     <Action
-                        imgName='more'/>
+                        imgName='more'
+                        IconEl={MoreHorizontal20Regular}
+                        iconColor='#242424'/>
                 </div>
                 <div className={styles.ribbon_dropdown}>
                     <Image 

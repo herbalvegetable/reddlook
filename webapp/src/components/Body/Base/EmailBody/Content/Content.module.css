@@ -29,6 +29,8 @@
     font-weight: 600;
 
     margin-right: 0.75em;
+
+    color: #424242;
 }
 .main .header .title .loading{
     color: gray;

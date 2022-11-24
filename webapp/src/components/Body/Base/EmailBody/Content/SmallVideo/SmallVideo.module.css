@@ -1,6 +1,7 @@
 .main{
     
 }
+
 .main .video{
     max-height: 10em;
     opacity: 0.25;
@@ -11,4 +12,9 @@
 .main .video:hover{
     opacity: 1;
     border-radius: 0px;
+}
+
+.main .img{
+    width: 1.5em;
+    height: 1.5em;
 }

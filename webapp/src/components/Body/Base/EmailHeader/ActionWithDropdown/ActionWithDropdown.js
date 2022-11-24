@@ -5,14 +5,20 @@ import styles from './ActionWithDropdown.module.css';
 
 const ActionWithDropdown = props => {
 
-    const { imgName, title, expanded } = props;
+    const { imgName, title, expanded, IconEl, iconColor } = props;
 
     return (
         <div className={styles.container}>
             <div className={`${styles.action} ${expanded ? styles.expanded : ''}`}>
-                <Image 
-                    src={`/media/ribbon/${imgName}.png`}
-                    className={styles.img}/>
+                {
+                    IconEl ?
+                        <IconEl className={styles.img} primaryFill={iconColor}/>
+                    :
+
+                    <Image 
+                        src={`/media/ribbon/${imgName}.png`}
+                        className={styles.img}/>
+                }
                 {
                     expanded && <span className={styles.title}>{title}</span>
                 }

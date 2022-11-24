@@ -151,7 +151,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    min-width: 49px;
+    min-width: 127px;
     min-height: 34px;
 
     border-radius: 5px;
@@ -172,12 +172,15 @@
     border-right: 1px solid #E5E5E5;
 }
 .header .ribbon_container .ribbon .quick_steps_container .action .img{
-    max-width: 24px;
-    max-height: 24px;
+    min-width: 24px;
+    width: 100%;
+    min-height: 24px;
+    height: 100%;
     margin-left: 4px;
 }
 .header .ribbon_container .ribbon .quick_steps_container .action .title{
     margin: 0 7px 0 3px;
+    white-space: nowrap;
     font-size: 14px;
     user-select: none;
 }
@@ -186,7 +189,7 @@
     align-items: center;
     justify-content: center;
 
-    min-width: 16px;
+    min-width: 20px;
 }
 .header .ribbon_container .ribbon .quick_steps_container .dropdown .img{
     max-width: 10px;
