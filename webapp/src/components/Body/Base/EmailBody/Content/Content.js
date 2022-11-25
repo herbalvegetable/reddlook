@@ -2,6 +2,13 @@ import { useState, useEffect, useContext, useRef } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import parse from 'html-react-parser';
 import randomColor from "randomcolor";
+import {
+    Emoji20Regular,
+    ArrowReply20Regular,
+    ArrowReplyAll20Regular,
+    ArrowForward20Regular,
+    MoreHorizontal20Regular,
+} from '@fluentui/react-icons';
 
 import styles from './Content.module.css';
 
@@ -150,29 +157,29 @@ const Content = props => {
                                     <span className={styles.author}>{selectedEmail.author} /RED - No Reply {`<no-reply.${selectedEmail.subreddit}@reddlook.com>`}</span>
                                     <div className={styles.actions}>
                                         <div className={styles.action}>
-                                            <Image 
-                                                src={'/media/content/smiley_face.png'}
-                                                className={styles.img}/>
+                                            <Emoji20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         </div>
                                         <div className={styles.action}>
-                                            <Image 
-                                                src={'/media/content/reply.png'}
-                                                className={styles.img}/>
+                                            <ArrowReply20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         </div>
                                         <div className={styles.action}>
-                                            <Image 
-                                                src={'/media/content/reply_all.png'}
-                                                className={styles.img}/>
+                                            <ArrowReplyAll20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         </div>
                                         <div className={styles.action}>
-                                            <Image 
-                                                src={'/media/content/forward.png'}
-                                                className={styles.img}/>
+                                            <ArrowForward20Regular
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         </div>
                                         <div className={styles.action}>
-                                            <Image 
-                                                src={'/media/content/more.png'}
-                                                className={styles.img}/>
+                                            <MoreHorizontal20Regular
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         </div>
                                     </div>
                                 </div>

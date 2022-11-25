@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
 import { 
+    Mail24Regular,
+
     Delete20Regular,
     Archive20Regular,
     ShieldError20Regular,
@@ -54,9 +56,12 @@ const EmailHeader = props => {
 
                     <div className={styles.new_email_container}>
                         <div className={styles.new_email}>
-                            <Image 
+                            {/* <Image 
                                 src={`/media/ribbon/new_email.png`}
-                                className={styles.img}/>
+                                className={styles.img}/> */}
+                            <Mail24Regular 
+                                className={styles.img}
+                                primaryFill='#fff'/>
                             <span className={styles.text}>New email</span>
                         </div>
                         <div className={styles.dropdown}>
