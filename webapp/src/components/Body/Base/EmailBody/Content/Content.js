@@ -105,6 +105,25 @@ const Content = props => {
         setCurrCommentIndex(closestCommentIndex);
     }
 
+    const getRandomNames = num => {
+        const names = ['Yam Lao Tay', 'Calvin Lee', 'Johnathan Tan', 'Rui Meng', 'Sunny Yeo', 'Timothy Hang', 'Caleb Chee', 'Harvey Tao',];
+
+        let randNums = [];
+
+        for (let i = 0; i < num; i++) {
+            let rand, loop = true;
+            while (loop){
+                rand = Math.floor(Math.random() * names.length);
+                loop = randNums.includes(rand);
+                console.log(loop);
+            }
+            randNums.push(rand);
+        }
+
+
+        return `${[...randNums.map(n => names[n])].join(' /RED; ')} /RED;`;
+    }
+
     return (
         
         <div className={styles.main}>
@@ -186,7 +205,7 @@ const Content = props => {
 
                                 <div className={styles.second_row}>
                                     <div className={styles.likes}>
-                                        Cc: Yam Lao Tay /RED; Calvin Lee /RED; <span className={styles.score}>+{selectedEmail.score} others</span>
+                                        Cc: {getRandomNames(2)} <span className={styles.score}>+{selectedEmail.score} others</span>
                                     </div>
                                     <div className={styles.time}>
                                         {convertSecondsToDate(selectedEmail.time)}

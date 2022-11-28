@@ -9,6 +9,9 @@ import {
     Send20Regular,
     Drafts20Regular,
     Delete20Regular,
+    FolderProhibited20Regular,
+    Archive20Regular,
+    Note20Regular,
 } from '@fluentui/react-icons';
 
 const SectionList = props => {
@@ -78,15 +81,18 @@ const SectionList = props => {
                 {
                     title: 'Junk Email',
                     imgName: '',
+                    Icon: FolderProhibited20Regular,
                 },
                 {
                     title: 'Archive',
                     imgName: '',
+                    Icon: Archive20Regular,
                     unreadNum: 2,
                 },
                 {
                     title: 'Notes',
                     imgName: '',
+                    Icon: Note20Regular,
                 },
     
                 // Example Subreddits
