@@ -24,8 +24,8 @@
     justify-content: flex-end;
 }
 .main .img_container .img{
-    max-width: 18px;
-    max-height: 18px;
+    max-width: 20px;
+    max-height: 20px;
 }
 
 .main .text_container{

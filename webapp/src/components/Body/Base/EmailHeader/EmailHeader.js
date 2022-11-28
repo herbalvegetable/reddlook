@@ -156,7 +156,8 @@ const EmailHeader = props => {
                     <Action 
                         imgName='undo'
                         IconEl={ArrowUndo20Regular}
-                        iconColor='#616161'/>
+                        iconColor='#616161'
+                        disabled/>
                     
                     <Divider />
 

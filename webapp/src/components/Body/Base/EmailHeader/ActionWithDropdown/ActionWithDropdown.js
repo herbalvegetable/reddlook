@@ -5,11 +5,11 @@ import styles from './ActionWithDropdown.module.css';
 
 const ActionWithDropdown = props => {
 
-    const { imgName, title, expanded, IconEl, iconColor } = props;
+    const { imgName, title, expanded, IconEl, iconColor, disabled } = props;
 
     return (
         <div className={styles.container}>
-            <div className={`${styles.action} ${expanded ? styles.expanded : ''}`}>
+            <div className={`${styles.action} ${expanded ? styles.expanded : ''} ${disabled ? styles.disabled : ''}`}>
                 {
                     IconEl ?
                         <IconEl className={styles.img} primaryFill={iconColor}/>

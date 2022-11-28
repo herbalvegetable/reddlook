@@ -29,6 +29,9 @@
 .container .action.expanded{
     
 }
+.container .action.disabled{
+    opacity: 0.4;
+}
 .container .action .img{
     max-width: 20px;
     max-height: 20px;

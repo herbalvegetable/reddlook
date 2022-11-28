@@ -4,6 +4,13 @@ import styles from './SectionList.module.css';
 
 import SectionDropdown from './SectionDropdown/SectionDropdown';
 
+import {
+    MailInbox24Regular,
+    Send20Regular,
+    Drafts20Regular,
+    Delete20Regular,
+} from '@fluentui/react-icons';
+
 const SectionList = props => {
 
     const { abortInboxFetch, inboxLoading, setInboxLoading } = props;
@@ -15,6 +22,7 @@ const SectionList = props => {
                 {
                     title: 'Inbox',
                     imgName: 'inbox',
+                    Icon: MailInbox24Regular,
                     unreadNum: 2045,
                     focused: true,
                     numHighlighted: true,
@@ -22,15 +30,18 @@ const SectionList = props => {
                 {
                     title: 'Sent Items',
                     imgName: 'sent_items',
+                    Icon: Send20Regular,
                 },
                 {
                     title: 'Drafts',
                     imgName: 'drafts',
+                    Icon: Drafts20Regular,
                     unreadNum: 3,
                 },
                 {
                     title: 'Deleted Items',
                     imgName: 'deleted_items',
+                    Icon: Delete20Regular,
                 },
             ],
             options: [
@@ -44,21 +55,25 @@ const SectionList = props => {
                 {
                     title: 'Inbox',
                     imgName: 'inbox',
+                    Icon: MailInbox24Regular,
                     unreadNum: 2045,
                     numHighlighted: true,
                 },
                 {
-                    title: 'Sent Items',
-                    imgName: 'sent_items',
-                },
-                {
                     title: 'Drafts',
                     imgName: 'drafts',
+                    Icon: Drafts20Regular,
                     unreadNum: 3,
+                },
+                {
+                    title: 'Sent Items',
+                    imgName: 'sent_items',
+                    Icon: Send20Regular,
                 },
                 {
                     title: 'Deleted Items',
                     imgName: 'deleted_items',
+                    Icon: Delete20Regular,
                 },
                 {
                     title: 'Junk Email',

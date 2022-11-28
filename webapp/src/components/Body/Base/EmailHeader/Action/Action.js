@@ -5,10 +5,10 @@ import styles from './Action.module.css';
 
 const Action = props => {
 
-    const { imgName, title, expanded, IconEl, iconColor } = props;
+    const { imgName, title, expanded, IconEl, iconColor, disabled } = props;
 
     return (
-        <div className={`${styles.action} ${expanded ? styles.expanded : ''}`}>
+        <div className={`${styles.action} ${expanded ? styles.expanded : ''} ${disabled ? styles.disabled : ''}`}>
             {
                 IconEl ?
                     <IconEl className={styles.img} primaryFill={iconColor}/>

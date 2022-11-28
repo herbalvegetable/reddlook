@@ -20,6 +20,9 @@
 .action.expanded{
     padding: 0 10px 0 5px;
 }
+.action.disabled{
+    opacity: 0.4;
+}
 .action .img{
     max-width: 20px;
     max-height: 20px;
