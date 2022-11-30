@@ -48,7 +48,7 @@ const Section = props => {
                 }
             </div>
             <div className={styles.text_container}>
-                <span className={`${styles.title}`}>{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+                <span className={`${styles.title}`}>{subredditName && 'Re: '}{title.charAt(0).toUpperCase() + title.slice(1)}</span>
                 { unreadNum && <span className={`${styles.unread_num} ${numHighlighted ? styles.highlighted : ''}`}>{unreadNum}</span> }
             </div>
         </div>

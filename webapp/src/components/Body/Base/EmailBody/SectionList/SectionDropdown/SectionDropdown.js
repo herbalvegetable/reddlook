@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
+import {
+    ChevronDown20Regular,
+    ChevronRight20Regular,
+} from '@fluentui/react-icons';
 
 import styles from './SectionDropdown.module.css';
 
@@ -26,11 +30,25 @@ const SectionDropdown = props => {
 
     return (
         <>
-            <div className={styles.title_container}>
+            <div 
+                className={styles.title_container}
+                onClick={e => {
+                    setIsExpanded(!isExpanded);
+                }}>
                 <div className={styles.img_container}>
-                    <Image
-                        src={`/media/sections/dropdown.png`}
-                        className={styles.img}/>
+                    {
+                        isExpanded ? 
+
+                        <ChevronDown20Regular
+                            primaryFill={'#808080'}
+                            className={styles.img}/>
+
+                        :
+
+                        <ChevronRight20Regular
+                            primaryFill={'#808080'}
+                            className={styles.img}/>
+                    }
                 </div>
                 <span className={styles.text}>{title}</span>
             </div>

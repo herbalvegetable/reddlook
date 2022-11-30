@@ -58,6 +58,8 @@ const Content = props => {
                         setLoading(false);
 
                         setCurrCommentIndex(0);
+
+                        setNameStr(getRandomNames(2));
                     })
                     .catch(err => console.log(err))
                 )
@@ -123,6 +125,7 @@ const Content = props => {
 
         return `${[...randNums.map(n => names[n])].join(' /RED; ')} /RED;`;
     }
+    const [nameStr, setNameStr] = useState('');
 
     return (
         
@@ -205,7 +208,7 @@ const Content = props => {
 
                                 <div className={styles.second_row}>
                                     <div className={styles.likes}>
-                                        Cc: {getRandomNames(2)} <span className={styles.score}>+{selectedEmail.score} others</span>
+                                        Cc: {nameStr} <span className={styles.score}>+{selectedEmail.score} others</span>
                                     </div>
                                     <div className={styles.time}>
                                         {convertSecondsToDate(selectedEmail.time)}
@@ -312,23 +315,23 @@ const Content = props => {
                                 <div className={styles.bottom_actions}>
                                     <Button
                                         className={styles.action}>
-                                        <Image 
-                                            src={'/media/content/reply.png'}
-                                            className={styles.img}/>
+                                        <ArrowReply20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         <span className={styles.text}>Reply</span>
                                     </Button>
                                     <Button
                                         className={styles.action}>
-                                        <Image 
-                                            src={'/media/content/reply_all.png'}
-                                            className={styles.img}/>
+                                        <ArrowReplyAll20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         <span className={styles.text}>Reply all</span>
                                     </Button>
                                     <Button
                                         className={styles.action}>
-                                        <Image 
-                                            src={'/media/content/forward.png'}
-                                            className={styles.img}/>
+                                        <ArrowForward20Regular 
+                                                className={styles.img}
+                                                primaryFill={'#0f6cbd'}/>
                                         <span className={styles.text}>Forward</span>
                                     </Button>
                                 </div>

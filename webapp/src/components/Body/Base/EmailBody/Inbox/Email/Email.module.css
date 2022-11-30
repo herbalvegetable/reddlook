@@ -70,7 +70,7 @@
     justify-content: space-between;
 
     width: 240px;
-    min-height: 19px;
+    min-height: 20px;
 }
 .main .content .top_row .author{
     max-width: 240px;
@@ -98,6 +98,7 @@
     
     padding: 1px 4px;
     margin-left: 0.75em;
+    border-radius: 4px;
 }
 .main .content .top_row .actions .action:hover{
     background-color: #F0F0F0;
@@ -142,6 +143,7 @@
     max-width: 240px;
     min-height: 20px;
     font-size: 14px;
+    color: #424242;
 
     white-space: nowrap; 
     overflow: hidden;

@@ -1,5 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { Image } from 'react-bootstrap';
+import {
+    Mail20Regular,
+    Flag20Regular,
+    Pin20Regular,
+    Delete20Regular,
+} from '@fluentui/react-icons';
 
 import styles from './Email.module.css';
 
@@ -61,18 +67,18 @@ const Email = props => {
                                     e.stopPropagation();
                                     markUnread(index);
                                 }}>
-                                <Image 
-                                    src='/media/inbox/mark_unread.png'
+                                <Mail20Regular 
+                                    primaryFill={'#616161'}
                                     className={styles.img}/>
                             </div>
                             <div className={styles.action}>
-                                <Image 
-                                    src='/media/inbox/flag.png'
+                                <Flag20Regular 
+                                    primaryFill={'#616161'}
                                     className={styles.img}/>
                             </div>
                             <div className={styles.action}>
-                                <Image 
-                                    src='/media/inbox/pin.png'
+                                <Pin20Regular 
+                                    primaryFill={'#616161'}
                                     className={styles.img}/>
                             </div>
                         </div>
@@ -93,9 +99,9 @@ const Email = props => {
                         className={styles.delete_btn}
                         onMouseOver={() => setIsHoverDelete(true)}
                         onMouseOut={() => setIsHoverDelete(false)}>
-                        <Image 
-                            src={`/media/inbox/${isHoverDelete ? 'red_delete': 'delete'}.png`}
-                            className={styles.img}/>
+                        <Delete20Regular 
+                                primaryFill={isHoverDelete ? 'red': '#616161'}
+                                className={styles.img}/>
                     </div>
                 }
             </div>

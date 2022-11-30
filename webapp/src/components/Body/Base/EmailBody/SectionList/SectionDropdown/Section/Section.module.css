@@ -4,6 +4,7 @@
     align-items: center;
 
     width: 100%;
+    max-width: 219px;
     min-height: 40px;
 
     margin-left: 8px;
@@ -30,22 +31,34 @@
 
 .main .text_container{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
+
+    padding: 0 0px 0 8px;
+
+    width: 129px;
 }
 
 .main .text_container .title{
+    display: inline-block;
+
     text-align: left;
 
-    padding: 0 0 0 8px;
-
     font-size: 14px;
-    color: #2C2C2C;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #424242;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .main .text_container .unread_num{
     text-align: right;
 
+    padding-left: 8px;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 350;
     color: #424242;
