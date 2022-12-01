@@ -29,6 +29,7 @@
 .main .body_text{
     text-align: left;
     font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .main .body_text div > p{
     max-width: calc(100vw - 728px - (var(--depth) * (0.75em + 2px)));
