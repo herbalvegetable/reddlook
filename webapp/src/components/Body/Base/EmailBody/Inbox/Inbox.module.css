@@ -151,6 +151,8 @@
     height: 38px;
 
     padding: 9px 0 12px calc(3em + 6px);
+
+    background-color: #FAFAFA;
 }
 .main .email_list .subreddit_title:hover{
     background-color: #f0f0f0;

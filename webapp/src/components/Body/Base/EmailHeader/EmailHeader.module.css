@@ -52,6 +52,7 @@
 .header .tabs > .tab_container .tab .text{
     font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #242424;
 
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
