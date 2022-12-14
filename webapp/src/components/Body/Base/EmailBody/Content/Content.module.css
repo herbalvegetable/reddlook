@@ -198,15 +198,14 @@
     overflow-wrap: break-word;
     word-break: break-word;
 }
-.main .body_container .body .main_content .body_text div span:global(.md-spoiler-text){
+.main .body_container .body .main_content .body_text div span.spoiler{
     background-color: rgb(220, 220, 220);
     color: rgb(220, 220, 220);
-
+    user-select: none;
     transition: 0.2s;
 }
-.main .body_container .body .main_content .body_text div span:global(.md-spoiler-text):hover{
-    background-color: white;
-    color: #000;
+.main .body_container .body .main_content .body_text div span.spoiler:hover{
+    cursor: pointer;
 }
 
 .main .body_container .body .main_content .expanded_img_container{

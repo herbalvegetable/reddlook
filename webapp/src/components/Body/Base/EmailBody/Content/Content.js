@@ -127,6 +127,26 @@ const Content = props => {
     }
     const [nameStr, setNameStr] = useState('');
 
+    // Spoiler text
+
+    const bodyTextRef = useRef(null);
+
+    const handleClickSpoiler = e => {
+        e.currentTarget.classList.toggle(styles.spoiler);
+    }
+
+    useEffect(() => {
+        try{
+            [...bodyTextRef?.current?.children[0]?.children].map(p => {
+                [...p.children].map(span => {
+                    if(span.getAttribute('class') != 'md-spoiler-text') return;
+                    span.setAttribute('class', styles.spoiler);
+                    span.onclick = handleClickSpoiler;
+                });
+            });
+        }catch(err){console.log(err);}
+    }, [selectedEmail.body]);
+
     return (
         
         <div className={styles.main}>
@@ -218,7 +238,9 @@ const Content = props => {
                                 {
                                     selectedEmail.body ?
 
-                                    <div className={styles.body_text}>
+                                    <div 
+                                        className={styles.body_text}
+                                        ref={bodyTextRef}>
                                         {parse(selectedEmail.body)}
                                     </div>
 
