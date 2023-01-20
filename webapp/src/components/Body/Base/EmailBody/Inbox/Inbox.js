@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext, useRef } from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, Dropdown, DropdownButton } from 'react-bootstrap';
+import onClickOutside from 'react-onclickoutside';
 
 import styles from './Inbox.module.css';
 
 import GlobalContext from '../../../../../context/GlobalContext';
 import Email from './Email/Email';
+import Filter from './Filter/Filter';
 
 const Inbox = props => {
 
@@ -129,51 +131,15 @@ const Inbox = props => {
                     <span className={styles.email_num}>{emails.length}</span>
                 </div>
                 
-                <div 
-                    className={styles.filter_container}
-                    onClick={e => {
-                        e.preventDefault();
-
-                        setIsOpenFilter(!isOpenFilter);
-                    }}
-                    
-                    onMouseEnter={e => setIsHoverFilter(true)}
-                    onMouseLeave={e => setIsHoverFilter(false)}>
-                    <div className={styles.img_container}>
-                        <Image 
-                            src={'/media/inbox/filter.png'}
-                            className={styles.img}/>
-                    </div>
-                    <span 
-                        className={styles.text}>
-                        Filter
-                    </span>
-                    {
-                        isOpenFilter &&
-                        <div className={styles.filter_dropdown}>
-                        {
-                            Object.entries(postTypeDisplay).map(([type, typeStr], i) => {
-                                return <div 
-                                    key={i.toString()}
-                                    className={styles.type_container}
-                                    onClick={e => {
-                                        setPostType(type);
-                                        fetchPosts(type);
-                                        setInboxLoading(true);
-                                    }}>
-                                    <div className={styles.checked_container}>
-
-                                    </div>
-                                    <div className={styles.image_container}>
-
-                                    </div>
-                                    <span className={styles.text}>{typeStr}</span>
-                                </div>
-                            })
-                        }
-                        </div>
-                    }
-                </div>
+                <Filter {...{
+                    isOpenFilter,
+                    setIsOpenFilter, 
+                    setIsHoverFilter,
+                    setPostType,
+                    fetchPosts,
+                    setInboxLoading,
+                    postTypeDisplay,
+                }}/>
             </div>
 
             <div 
@@ -199,7 +165,7 @@ const Inbox = props => {
             {
                 subreddit && 
                 <div className={styles.subreddit_title}>
-                    <span className={styles.top_text}>Other: New Conversations</span>
+                    <span className={styles.top_text}>Other: New conversations</span>
                     <span className={styles.subreddit_text}>Notifications: {subreddit}</span>
                 </div>
             }
