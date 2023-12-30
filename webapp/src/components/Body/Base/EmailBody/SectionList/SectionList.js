@@ -94,7 +94,7 @@ const SectionList = props => {
                     imgName: '',
                     Icon: Note20Regular,
                 },
-    
+
                 // Example Subreddits
                 {
                     title: 'all',
@@ -231,13 +231,12 @@ const SectionList = props => {
     const [isHover, setIsHover] = useState(false);
 
     return (
-        <div 
+        <div
             className={styles.main}
             onMouseEnter={e => setIsHover(true)}
             onMouseLeave={e => setIsHover(false)}
-            style={{
-                overflowY: isHover ? 'auto' : 'hidden',
-            }}>
+            // style={{ overflowY: isHover ? 'auto' : 'hidden', }}
+            >
             {
                 sections.map((section, i) => {
                     return <SectionDropdown
