@@ -45,7 +45,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`https://${API_URL}/${subreddit}/post/${selectedEmailId}`, {signal})
+            fetch(`https://${API_URL}/${subreddit}/post/${selectedEmailId}`, {mode: 'cors', signal})
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);
@@ -76,7 +76,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`https://${API_URL}/${subreddit}/comments/${selectedEmailId}`, {signal})
+            fetch(`https://${API_URL}/${subreddit}/comments/${selectedEmailId}`, {mode: 'cors', signal})
                 .then(res => res.json()
                     .then(data => {
                         setComments(data);

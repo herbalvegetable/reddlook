@@ -68,7 +68,7 @@ const Inbox = props => {
 
         if(!subreddit) return;
         // console.log(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''));
-        fetch(`https://${API_URL}/${subreddit}/${postFilter}limit=${limit || 15}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
+        fetch(`https://${API_URL}/${subreddit}/${postFilter}limit=${limit || 15}` + (after ? `&after=${after}` : ''), {method: 'GET', mode: 'cors', signal})
             .then(res => res.json()
                 .then(data => {
                     console.log(data);
