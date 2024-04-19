@@ -14,13 +14,14 @@ import styles from './Content.module.css';
 
 import GlobalContext from '../../../../../context/GlobalContext';
 import { convertSecondsToDate } from '../../../../../hooks/useConvertSecondsToDate';
+import { getApiUrl } from '../../../../../hooks/useApiUrl';
 import Comment from './Comment/Comment';
 import SmallImage from './SmallImage/SmallImage';
 import SmallVideo from './SmallVideo/SmallVideo';
 
 const Content = props => {
 
-    const { subreddit, profileIconColour } = useContext(GlobalContext);
+    const { subreddit, profileIconColour, deployment } = useContext(GlobalContext);
 
     const { selectedEmailId, controller, loading, setLoading } = props;
     const { signal } = controller;
@@ -40,9 +41,11 @@ const Content = props => {
     const [isScrolling, setIsScrolling] = useState(false);
     const commentListRef = useRef(null);
 
+    const API_URL = getApiUrl(deployment, window);
+
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`http://${window.location.hostname}:5000/${subreddit}/post/${selectedEmailId}`, {signal})
+            fetch(`https://${API_URL}/${subreddit}/post/${selectedEmailId}`, {signal})
                 .then(res => res.json()
                     .then(data => {
                         setSelectedEmail(data);
@@ -73,7 +76,7 @@ const Content = props => {
 
     useEffect(() => {
         if(selectedEmailId){
-            fetch(`http://${window.location.hostname}:5000/${subreddit}/comments/${selectedEmailId}`, {signal})
+            fetch(`https://${API_URL}/${subreddit}/comments/${selectedEmailId}`, {signal})
                 .then(res => res.json()
                     .then(data => {
                         setComments(data);

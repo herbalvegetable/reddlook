@@ -4,13 +4,14 @@ import onClickOutside from 'react-onclickoutside';
 
 import styles from './Inbox.module.css';
 
+import { getApiUrl } from '../../../../../hooks/useApiUrl';
 import GlobalContext from '../../../../../context/GlobalContext';
 import Email from './Email/Email';
 import Filter from './Filter/Filter';
 
 const Inbox = props => {
 
-    const { subreddit, setSubreddit } = useContext(GlobalContext);
+    const { subreddit, setSubreddit, deployment } = useContext(GlobalContext);
 
     const { selectedEmailIndex, setSelectedEmailIndex, setSelectedEmailId, abortFetch, setLoading, inboxLoading, setInboxLoading, inboxLoadingController } = props;
 
@@ -40,6 +41,8 @@ const Inbox = props => {
         fetchPosts(postType);
     }, [subreddit]);
 
+    const API_URL = getApiUrl(deployment, window);
+
     const fetchPosts = (type, limit, after) => {
         let postFilter = '';
         switch(type){
@@ -65,7 +68,7 @@ const Inbox = props => {
 
         if(!subreddit) return;
         // console.log(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 20}` + (after ? `&after=${after}` : ''));
-        fetch(`http://${window.location.hostname}:5000/${subreddit}/${postFilter}limit=${limit || 15}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
+        fetch(`https://${API_URL}/${subreddit}/${postFilter}limit=${limit || 15}` + (after ? `&after=${after}` : ''), {method: 'GET', signal})
             .then(res => res.json()
                 .then(data => {
                     console.log(data);

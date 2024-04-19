@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getHotPostsBasic, getTopPostsBasic, getPost, getPostComments } = require('./redditApi'); 
+const { getHotPostsBasic, getTopPostsBasic, getPost, getPostComments } = require('../redditApi'); 
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -8,7 +8,9 @@ const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
 
-app.use(cors());
+app.use(cors({
+    origin: ['https://reddlook.vercel.app', 'http://localhost'],
+}));
 
 // Reddit API
 
